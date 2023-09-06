@@ -9,7 +9,8 @@ import Description from "@/components/Description";
 export default async function Blogs() {
     const client = createClient();
 
-    const pages = await client.getAllByType("about");
+    const page = await client.getSingle("about");
+    // const pages = await client.getAllByType("blog_post");
 
     return (
         <div
