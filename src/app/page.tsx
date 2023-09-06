@@ -967,11 +967,12 @@ const ProgressTracker: React.FC<ProgressTrackerProps> = ({
                     justifyContent: "center",
                 }}
             >
-                {scrollToObjects.map((obj) => {
+                {scrollToObjects.map((obj, index) => {
                     const isActive =
                         Math.abs(scrollPosition * 100 - obj.marginTop) < 20;
                     return (
                         <div
+                        key={index}
                             style={{
                                 position: "absolute",
                                 top: `${obj.marginTop * scale}vw`,
