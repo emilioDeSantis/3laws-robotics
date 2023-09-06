@@ -1,0 +1,85 @@
+{
+  "id": "blog_post",
+  "label": "Blog Post",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "route_name": {
+        "type": "Text",
+        "config": {
+          "label": "Route name(make this same as uid)",
+          "placeholder": ""
+        }
+      },
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "author": {
+        "type": "Text",
+        "config": { "label": "Author", "placeholder": "" }
+      },
+      "publish_date": {
+        "type": "Date",
+        "config": { "label": "Publish date", "placeholder": "" }
+      },
+      "read_time": {
+        "type": "Number",
+        "config": { "label": "Read time(mins)", "placeholder": "" }
+      },
+      "title": {
+        "type": "Text",
+        "config": { "label": "Title", "placeholder": "" }
+      },
+      "preview_image": {
+        "type": "Image",
+        "config": {
+          "label": "Preview image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "summary": {
+        "type": "Text",
+        "config": { "label": "Summary", "placeholder": "" }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "blog_post_sub_title": { "type": "SharedSlice" },
+            "blog_post_paragraph": { "type": "SharedSlice" },
+            "blog_post_note": { "type": "SharedSlice" },
+            "blog_post_image": { "type": "SharedSlice" },
+            "blog_post_bullet_list": { "type": "SharedSlice" },
+            "blog_post_numbered_list": { "type": "SharedSlice" }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": { "height": 1260, "width": 2400 },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}

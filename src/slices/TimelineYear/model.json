@@ -1,0 +1,23 @@
+{
+  "id": "timeline_year",
+  "type": "SharedSlice",
+  "name": "TimelineYear",
+  "description": "TimelineYear",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "year": {
+          "type": "Number",
+          "config": { "label": "Year", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

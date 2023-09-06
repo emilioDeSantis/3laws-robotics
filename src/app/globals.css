@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.underlineLinks a {
+    color: #aaf9ff;
+    text-decoration: underline;
+}

@@ -1,0 +1,23 @@
+{
+  "id": "blog_post_sub_title",
+  "type": "SharedSlice",
+  "name": "BlogPostSubTitle",
+  "description": "BlogPostSubTitle",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

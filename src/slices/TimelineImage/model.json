@@ -1,0 +1,23 @@
+{
+  "id": "timeline_image",
+  "type": "SharedSlice",
+  "name": "TimelineImage",
+  "description": "TimelineImage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

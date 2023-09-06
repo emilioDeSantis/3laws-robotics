@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"year": {
+				"__TYPE__": "FieldContent",
+				"value": "76",
+				"type": "Number"
+			}
+		},
+		"items": []
+	}
+]
