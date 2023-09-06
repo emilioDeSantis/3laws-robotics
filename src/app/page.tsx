@@ -9,6 +9,8 @@ import {
     scroller,
 } from "react-scroll";
 
+const test = "test"
+
 const throttle = (fn: Function, delay: number) => {
     let lastCall = 0;
 
