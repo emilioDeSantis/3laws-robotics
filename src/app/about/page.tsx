@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import PageContentContainer from "@/components/PageContentContainer";
 import Title from "@/components/Title";
+//
 
 export default async function About() {
     const client = createClient();
