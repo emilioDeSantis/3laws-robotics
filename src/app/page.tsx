@@ -8,8 +8,7 @@ import {
     animateScroll as scroll,
     scroller,
 } from "react-scroll";
-
-const test = "test"
+//kjhvbkjhbvkjhvbkjvh
 
 const throttle = (fn: Function, delay: number) => {
     let lastCall = 0;
