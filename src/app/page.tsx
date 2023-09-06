@@ -8,7 +8,6 @@ import {
     animateScroll as scroll,
     scroller,
 } from "react-scroll";
-//kjhvbkjhbvkjhvbkjvh
 
 const throttle = (fn: Function, delay: number) => {
     let lastCall = 0;
@@ -377,7 +376,7 @@ export default function HomePage() {
                             fontFamily: "korataki",
                         }}
                     >
-                        Inroducing the 3Laws'
+                        {`Inroducing the 3Laws'`}
                     </div>
                     <h1
                         style={{
@@ -656,10 +655,10 @@ export default function HomePage() {
                             }
                         }
                     >
-                        The 3Laws Safety Supervisor stands as a beacon of
+                        {`The 3Laws Safety Supervisor stands as a beacon of
                         advanced robotic safety. Beyond just technology, it's a
                         product designed to revolutionize robotic operations,
-                        merging safety with peak performance.
+                        merging safety with peak performance.`}
                     </div>
 
                     <Button
