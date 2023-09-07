@@ -12,7 +12,7 @@ export default async function Blogs() {
     const pages = await client.getAllByType("blog_post", {
         limit: 3
     });
-    //
+    
     // const pages = await client.getByUID("blog_post", 'culture')
 
     // return (
