@@ -85,19 +85,19 @@ export default async function Page({ params }: { params: Params }) {
     // );
 }
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Params;
-}): Promise<Metadata> {
-    const client = createClient();
-    const page = await client.getByUID("blog_post", params.uid);
+// export async function generateMetadata({
+//     params,
+// }: {
+//     params: Params;
+// }): Promise<Metadata> {
+//     const client = createClient();
+//     const page = await client.getByUID("blog_post", params.uid);
 
-    return {
-        title: page.data.meta_title,
-        description: page.data.meta_description,
-    };
-}
+//     return {
+//         title: page.data.meta_title,
+//         description: page.data.meta_description,
+//     };
+// }
 
 // export async function generateStaticParams() {
 //     const client = createClient();

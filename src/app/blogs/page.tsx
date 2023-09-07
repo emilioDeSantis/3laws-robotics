@@ -9,8 +9,10 @@ import Description from "@/components/Description";
 export default async function Blogs() {
     const client = createClient();
 
-    const page = await client.getSingle("about");
-    // const pages = await client.getAllByType("blog_post");
+    const pages = await client.getAllByType("blog_post", {
+        limit: 1
+    });
+    // const pages = await client.getByUID("blog_post", 'culture')
 
     return (
         <div
