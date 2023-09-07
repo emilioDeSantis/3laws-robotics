@@ -9,21 +9,8 @@ import Description from "@/components/Description";
 export default async function Blogs() {
     const client = createClient();
 
-    const pages = await client.getAllByType("blog_post", {
-        limit: 3
-    });
+    const pages = await client.getAllByType("blog_post");
     
-    // const pages = await client.getByUID("blog_post", 'culture')
-
-    // return (
-    //     <div
-    //         style={{
-    //             display: "flex",
-    //             flexDirection: "column",
-    //             width: "100vw",
-    //         }}
-    //     />
-    // );
 
     return (
         <div
