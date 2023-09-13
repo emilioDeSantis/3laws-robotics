@@ -31,7 +31,7 @@ export default function HomePage() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
     const [scrollScale, setScrollScale] = useState<number>(1.44);
-    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState<number>(0);
     const [mobile, setMobile] = useState<boolean>(true);
 
     useEffect(() => {
