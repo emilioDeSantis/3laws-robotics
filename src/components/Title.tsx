@@ -7,6 +7,7 @@ interface TitleProps {
 const Title: React.FC<TitleProps> = ({ children }) => {
     return (
         <div
+        className="page-padding"
             style={{
                 width: "100vw",
                 display: "flex",
@@ -14,14 +15,12 @@ const Title: React.FC<TitleProps> = ({ children }) => {
             }}
         >
             <h1
+            className="page-title"
                 style={{
                     fontWeight: 500,
-                    fontSize: "3.4vw",
                     fontFamily: "korataki",
                     letterSpacing: "0.12em",
-                    // marginInline: "24vw",
-                    width: "46rem",
-                    marginTop: "15rem",
+                lineHeight: '130%',
                 }}
             >
                 {children}

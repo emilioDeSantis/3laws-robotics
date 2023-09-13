@@ -25,8 +25,8 @@ const CaseStudies: React.FC = () => {
                     style={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: "200px",
-                        paddingTop: "160px",
+                        gap: "5rem",
+                        paddingTop: "5rem",
                     }}
                 >
                     <Case

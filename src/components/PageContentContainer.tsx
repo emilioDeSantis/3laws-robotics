@@ -9,6 +9,7 @@ const PageContentContainer: React.FC<PageContentContainerProps> = ({
 }) => {
     return (
         <main
+        className="page-padding"
             style={{
                 width: "100vw",
                 display: "flex",
@@ -17,11 +18,10 @@ const PageContentContainer: React.FC<PageContentContainerProps> = ({
             }}
         >
             <div
+            className="page-content-container"
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "60rem",
-                    // paddingTop: "6rem",
                 }}
             >
                 {children}

@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.className}>
       <body style={{
-        background: '#080808',
+        background: '#0b0b0b',
         color: "white",
       }}>
         <Header/>

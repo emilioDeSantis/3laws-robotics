@@ -15,13 +15,13 @@ const Button: React.FC<ButtonProps> = ({ href, text }) => {
             style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "1rem",
                 justifyContent: "center",
                 paddingInline: "2rem",
                 paddingBlock: "1rem",
                 background: "#ddffff44",
                 color: '#ddffff',
-                marginTop: "50px",
+                marginTop: "0rem",
                 borderRadius: '10px',
             }}
         >

@@ -10,7 +10,6 @@ export default async function Blogs() {
     const client = createClient();
 
     const pages = await client.getAllByType("blog_post");
-    
 
     return (
         <div
@@ -20,20 +19,18 @@ export default async function Blogs() {
                 width: "100vw",
             }}
         >
-        <Title>Industry Insights</Title>
-            <PageContentContainer>
-                <Description>
-                    This guide by 3Laws Robotics covers essential robotic safety
-                    standards. Understand key methods for reliable system
-                    operation.
-                </Description>
+            <Title>Industry Insights</Title>
 
+            <Description>
+                This guide by 3Laws Robotics covers essential robotic safety
+                standards. Understand key methods for reliable system operation.
+            </Description>
+            <PageContentContainer>
                 <div
+                className="blogs-grid"
                     style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: "32px",
-                        paddingTop: "80px",
+                        gap: "2rem",
+                        paddingTop: "6rem",
                     }}
                 >
                     {pages.map((blog, index) => (
@@ -53,7 +50,7 @@ export default async function Blogs() {
                             <div
                                 style={{
                                     width: "100%",
-                                    height: "18rem",
+                                    aspectRatio: 1.6,
                                     position: "relative",
                                 }}
                             >
@@ -134,4 +131,3 @@ export default async function Blogs() {
         </div>
     );
 }
-

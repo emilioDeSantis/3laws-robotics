@@ -7,6 +7,7 @@ interface DescriptionProps {
 const Description: React.FC<DescriptionProps> = ({ children }) => {
     return (
         <div
+        className="page-padding"
             style={{
                 width: "100vw",
                 display: "flex",
@@ -15,13 +16,12 @@ const Description: React.FC<DescriptionProps> = ({ children }) => {
         >
             <div
                 style={{
-                    fontWeight: 200,
+                    fontWeight: 300,
                     marginTop: "3rem",
-                    fontSize: "1.2vw",
+                    fontSize: "1rem",
                     letterSpacing: "0.08em",
-                    fontFamily: "korataki",
-                    // marginInline: "24vw",
                     width: "46rem",
+                    opacity: 0.8,
                 }}
             >
                 {children}

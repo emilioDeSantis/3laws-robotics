@@ -22,20 +22,16 @@ export default async function About() {
         <Title>Technology Development </Title>
             <PageContentContainer>
                 <div
-                    className="underlineLinks"
+                    className="underlineLinks timeline-container"
                     style={{
                         display: "flex",
-                        marginTop: "160px",
-                        gap: "50px",
                     }}
                 >
                     <div
+                    className="timeline-line"
                         style={{
-                            minWidth: "4px",
                             background: "white",
-                            marginLeft: "20rem",
                             minHeight: "100%",
-                            marginTop: "1.5rem",
                         }}
                     />
                     <div
@@ -66,20 +62,4 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-
-
-
-// export default async function About() {
-    
-
-//     return (
-//         <div
-//             style={{
-//                 display: "flex",
-//                 flexDirection: "column",
-//                 width: "100vw",
-//             }}
-//         />
-//     );
-// }
 

@@ -6,3 +6,413 @@
     color: #aaf9ff;
     text-decoration: underline;
 }
+
+.card-texture {
+    background: #ffffff11;
+    border-radius: 10px;
+    border: 1px solid #fff4;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-texture {
+    background: #0b0b0b88;
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
+}
+
+/* Assuming mobile-first approach */
+
+.mobile {
+    display: flex; /* Display flex on mobile by default */
+}
+
+.desktop {
+    display: none; /* Display none on desktop by default */
+}
+
+.page-padding {
+    padding-inline: 0.6rem;
+}
+
+.hero-subtitle {
+    margin-top: 46vh;
+    font-size: 0.9rem;
+}
+
+.hero-title {
+    margin-top: 1rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.scroll-to-button-container {
+    padding-bottom: 5.4rem;
+}
+
+.section-card {
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    width: 100%;
+}
+.section-card-container {
+    padding-inline: 0.6rem;
+}
+
+.card-title {
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    margin-top: 1.5rem;
+    line-height: 132%;
+}
+
+.card-link {
+    margin-top: 0.6rem;
+}
+.page-previews-container {
+    padding-top: 0rem;
+    gap: 4rem;
+    padding-bottom: 6rem;
+}
+
+.homepage-bottom-container {
+    top: 2600vw;
+}
+
+.big-text {
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #ffffff;
+    line-height: 150%;
+}
+.scroll-video-container {
+    position: fixed;
+    top: 72vw;
+    top: 0vw;
+    left: 0;
+    height: 80vw;
+    width: 100%;
+    overflow: hidden;
+    mix-blend-mode: lighten;
+}
+
+.scroll-triggered-text {
+    font-size: 8vw;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    width: 100%;
+    margin-top: 8rem;
+}
+
+
+.page-content-container {
+    width: 100%;
+}
+
+.timeline-container {
+    gap: 1rem;
+    margin-top: 6rem;
+}
+.timeline-year {
+    margin-left: -5rem;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.timeline-line {
+    min-width: 2px;
+    margin-left: 3.6rem;
+    margin-top: 1.5rem;
+}
+.timeline-year-circle {
+    height: 12px;
+    width: 12px;
+    margin-left: -1.45rem;
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+/* section positions */
+
+.dynamic-environment {
+    top: 224vw;
+}
+
+.collisions {
+    top: 624vw;
+}
+
+.safety-supervisor {
+    top: 984vw;
+}
+
+.diagnostic-tools {
+    top: 1854vw;
+}
+
+.metrics {
+    top: 2474vw;
+}
+
+/* scroll to positions */
+
+.start {
+    margin-top: 0vw;
+}
+
+.Scroll-or-Click-to-Explore {
+    margin-top: 150vw;
+}
+
+.Enter-Dynamic-Environment {
+    margin-top: 368vw;
+}
+
+.Witness-the-Impact {
+    margin-top: 544vw;
+}
+
+.Face-the-Repercussions {
+    margin-top: 920vw;
+}
+
+.Activate-Safety-Supervisor {
+    margin-top: 1200vw;
+}
+
+.Reenter-Dynamic-Environment {
+    margin-top: 1560vw;
+}
+
+.Continue {
+    margin-top: 1780vw;
+}
+
+.Uncover-Deeper-Insights {
+    margin-top: 2400vw;
+}
+
+.Explore-Beyond {
+    margin-top: 2600vw;
+}
+
+/* scroll tr9gered text positions */
+
+.collision {
+    left: 30vw;
+    top: 30vw;
+}
+.down-time {
+    left: 6vw;
+    top: 22vw;
+}
+.activating {
+    left: 16vw;
+    top: 20vw;
+}
+.obstacle-avoided {
+    left: 28vw;
+    top: 18vw;
+}
+
+/* Media query for typical desktop screens */
+@media screen and (min-width: 768px) {
+    /* 768px is a common breakpoint but you can adjust as necessary */
+
+    .mobile {
+        display: none; /* Hide on desktop */
+    }
+    .desktop {
+        display: flex;
+    }
+
+    .page-padding {
+        padding-inline: 7vw;
+    }
+
+    .hero-subtitle {
+        margin-top: 36vh;
+        font-size: 1.1rem;
+    }
+
+    .hero-title {
+        margin-top: 1vw;
+        font-size: 3rem;
+        width: 60vw;
+    }
+
+    .scroll-to-button-container {
+        padding-bottom: 1.4rem;
+    }
+    .section-card {
+        padding-inline: 2vw;
+        padding-block: 2vw;
+        width: 46vw;
+    }
+
+    .section-card-container {
+        padding-inline: 7vw;
+    }
+
+    .card-title {
+        margin-top: 1vw;
+        font-size: 1.6rem;
+    }
+    .card-text {
+        margin-top: 3vw;
+        line-height: 170%;
+    }
+
+    .card-link {
+        margin-top: 1vw;
+    }
+
+    .page-previews-container {
+        width: 46rem;
+        padding-top: 4rem;
+        gap: 4rem;
+        padding-bottom: 6rem;
+    }
+
+    .homepage-bottom-container {
+        top: 1570vw;
+    }
+
+    .big-text {
+        font-size: 1.8rem;
+    }
+
+    .scroll-video-container {
+        top: 0;
+        height: 100%;
+    }
+
+    .scroll-triggered-text {
+        font-size: 3vw;
+    }
+    .page-title {
+        font-size: 3rem;
+        width: 46rem;
+        margin-top: 12rem;
+    }
+
+    .page-content-container {
+
+        width: 60rem;
+    }
+
+    .timeline-container {
+        gap: 3rem;
+        margin-top: 8rem;
+    }
+
+    .timeline-year {
+    margin-left: -24rem;
+    font-size: 5rem;
+}
+.timeline-line {
+    min-width: 4px;
+    margin-left: 20rem;
+    margin-top: 1.5rem;
+}
+.timeline-year-circle {
+    height: 20px;
+    width: 20px;
+    margin-left: -3.75rem;
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+    /* section positions */
+
+    .dynamic-environment {
+        top: 110vw;
+    }
+
+    .collisions {
+        top: 355vw;
+    }
+
+    .safety-supervisor {
+        top: 590vw;
+    }
+
+    .diagnostic-tools {
+        top: 1130vw;
+    }
+
+    .metrics {
+        top: 1520vw;
+    }
+
+    /* scroll to positions */
+
+    .start {
+        margin-top: 0vw;
+    }
+
+    .Scroll-or-Click-to-Explore {
+        margin-top: 95vw;
+    }
+
+    .Enter-Dynamic-Environment {
+        margin-top: 230vw;
+    }
+
+    .Witness-the-Impact {
+        margin-top: 340vw;
+    }
+
+    .Face-the-Repercussions {
+        margin-top: 575vw;
+    }
+
+    .Activate-Safety-Supervisor {
+        margin-top: 756vw;
+    }
+
+    .Reenter-Dynamic-Environment {
+        margin-top: 978vw;
+    }
+
+    .Continue {
+        margin-top: 1115vw;
+    }
+
+    .Uncover-Deeper-Insights {
+        margin-top: 1505vw;
+    }
+
+    .Explore-Beyond {
+        margin-top: 1570vw;
+    }
+
+    /* scroll tr9gered text positions */
+
+    .collision {
+        left: 60vw;
+        top: 20vw;
+    }
+    .down-time {
+        left: 16vw;
+        top: 18vw;
+    }
+    .activating {
+        left: 48vw;
+        top: 16vw;
+    }
+    .obstacle-avoided {
+        left: 58vw;
+        top: 16vw;
+    }
+}

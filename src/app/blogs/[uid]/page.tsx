@@ -20,9 +20,8 @@ export default async function Page({ params }: { params: Params }) {
 
     return (
         <main
-        className="underlineLinks"
+        className="underlineLinks page-padding"
             style={{
-                background: "#111111",
                 display: "flex",
                 justifyContent: 'center',
             }}
