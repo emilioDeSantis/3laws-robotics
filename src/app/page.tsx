@@ -27,11 +27,21 @@ const throttle = (fn: Function, delay: number) => {
     };
 };
 
+// function debounce(func: (...args: any[]) => void, wait: number) {
+//     let timeout: NodeJS.Timeout;
+//     return function (...args: any[]) {
+//         const context = this;
+//         clearTimeout(timeout);
+//         timeout = setTimeout(() => func.apply(context, args), wait);
+//     };
+// }
+
 export default function HomePage() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
     const [scrollScale, setScrollScale] = useState<number>(1.44);
-    const [windowWidth, setWindowWidth] = useState<number>(0);
+    const [windowWidth, setWindowWidth] = useState<number>(1000);
+    // need to fix this^ it doenst updta eteh scroll scale before its locked in
     const [mobile, setMobile] = useState<boolean>(true);
 
     useEffect(() => {
@@ -59,6 +69,9 @@ export default function HomePage() {
 
     useEffect(() => {
         const handleScroll = throttle(() => {
+            window.requestAnimationFrame(() => {
+  
+            
             const viewportWidth = window.innerWidth;
             const scrollFactor = viewportWidth;
 
@@ -68,7 +81,7 @@ export default function HomePage() {
                 const scrollPos = window.pageYOffset;
                 const scrollPercent = scrollPos / scrollFactor;
                 videoRef.current.currentTime = scrollPercent * scrollScale;
-            }
+            }});
         }, 40);
 
         window.addEventListener("scroll", handleScroll);
@@ -78,13 +91,50 @@ export default function HomePage() {
         };
     }, [scrollScale]);
 
+    // const lastScrollY = useRef(0);
+
+// const handleScroll = debounce(() => {
+//     const currentScrollY = window.pageYOffset;
+//     if (currentScrollY !== lastScrollY.current) {
+//         window.requestAnimationFrame(() => {
+//             const viewportWidth = window.innerWidth;
+//             const scrollFactor = viewportWidth;
+
+//             setScrollPosition(currentScrollY / scrollFactor);
+
+//             if (videoRef.current) {
+//                 const scrollPos = currentScrollY;
+//                 const scrollPercent = scrollPos / scrollFactor;
+//                 videoRef.current.currentTime = scrollPercent * scrollScale;
+//             }
+
+//             lastScrollY.current = currentScrollY;
+//         });
+//     }
+// }, 40);
+
+// useEffect(() => {
+//     window.addEventListener("scroll", handleScroll);
+//     return () => {
+//         window.removeEventListener("scroll", handleScroll);
+//     };
+// }, [scrollScale]);
+
+
     return (
         <div
             style={{
                 color: "white",
             }}
         >
+            <div style={{
+                height: '100vh',
+                width: '100vw',
+                background: 'black',
+                position: 'fixed',
+            }}/>
             <div className="scroll-video-container">
+            {/* aspect ratio on desktop is 100/56 of original video */}
                 <video
                     autoPlay={mobile ? true : false}
                     ref={videoRef}
@@ -94,8 +144,8 @@ export default function HomePage() {
                         height: "100%",
                         objectFit: "cover",
                     }}
-                    src="/0000-0550.mp4"
-                    // src="/output4.mp4"
+                    // src="/0000-05502.mp4"
+                    src="/output4.mp4"
                 />
             </div>
 

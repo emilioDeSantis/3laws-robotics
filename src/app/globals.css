@@ -90,10 +90,9 @@
 }
 .scroll-video-container {
     position: fixed;
-    top: 72vw;
-    top: 0vw;
+    top: -24vw;
     left: 0;
-    height: 80vw;
+    height: 136vw;
     width: 100%;
     overflow: hidden;
     mix-blend-mode: lighten;
