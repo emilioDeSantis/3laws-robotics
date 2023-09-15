@@ -1,6 +1,6 @@
 "use client";import React, { useRef, useEffect, useState } from "react";
 
-const totalFrames = 30;
+const totalFrames = 6;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 export default function ScrollingVideoComponent() {
