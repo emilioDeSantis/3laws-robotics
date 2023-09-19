@@ -7,6 +7,17 @@ const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 type FrameImage = HTMLImageElement | null
 
+
+function createImageSrc(index:number, resolution:number, qualityValue:number){
+    const localSrc = `${framePath}${String(index).padStart(5, "0")}.png`;
+    const optimizedSrc = `/_next/image?url=${encodeURIComponent(localSrc)}&w=${resolution}&q=${qualityValue}`;
+
+    console.log(optimizedSrc);
+    
+    return optimizedSrc
+}
+
+
 export default function ScrollingVideoComponent() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const frameRef = useRef<number>(0);
@@ -52,59 +63,87 @@ export default function ScrollingVideoComponent() {
 
 
 
-    const loadImages = async (quality: 'low' | 'hi') => {
-        const qualitySettings: Record<'low' | 'hi', { quality: number, resolution: number }> = {
-            'low': { quality: 1, resolution: 640 },
-            'hi': { quality: 85, resolution: 3840 }
-        };
-
-        const { quality: qualityValue, resolution } = qualitySettings[quality];
-
-
-
-        const loadImage = async (index: number) => {
+    const loadLowResImages = async () => {
+        const resolution = 640;
+        const qualityValue = 1;
+    
+        const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
+            
+            return new Promise((resolve, reject) => {
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = createImageSrc(index, resolution, qualityValue);
+            });
+        };
+    
+        const allImagesPromises: Promise<HTMLImageElement>[] = [];
+        const loadedLowResImages: HTMLImageElement[] = new Array(totalFrames).fill(null);
+    
+        for (let i = 0; i < totalFrames; i++) {
 
+            allImagesPromises.push(loadImage(i).then(img => {
+
+                loadedLowResImages[i]=img;
+    
+                const loadedCount = loadedLowResImages.filter(i=>i).length;
+                const progress = (loadedCount / totalFrames) * 100;
+                setLoadingProgress(Math.floor(progress));
+    
+                return img;
+            }));
+        }
+    
+        try {
+            await Promise.all(allImagesPromises);
+            setLoadedImages(loadedLowResImages);
+        } 
+        catch (error) {
+            console.error("Error loading low-res images", error);
+        }
+    };
+    
+
+
+
+    const loadHiResImages = async () => {
+        const resolution = 3840;
+        const qualityValue = 85;
+    
+        const loadImage = async (index: number): Promise<HTMLImageElement> => {
+            const img = new Image();
+            
+            return new Promise((resolve, reject) => {
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+
+                img.src = createImageSrc(index, resolution, qualityValue);
+
+            });
+        };
+    
+        for (let i = 0; i < totalFrames; i++) {
             try {
-                await new Promise((resolve, reject) => {
-                    img.onload = () => {
-                        const loadedCount = index + 1;
-                        const progress = (loadedCount / totalFrames) * 100;
-                        setLoadingProgress(Math.floor(progress));
-                        // Updating the state once all images are loaded
-                        setLoadedImages(prevImages => {
+                const img = await loadImage(i);
+                  setLoadedImages(prevImages => {   
+                    const newImages = [...prevImages];
 
-                            
-                            const newImages = [...prevImages];
-
-                            if(newImages[index]){
-                                newImages[index] = img;
-                            }
-                            else{
-                                newImages.push(img)
-                            }
-                            
-                            return newImages;
-                        });
-                        resolve(img);
-                    };
-
-                    img.onerror = reject;
-                    const localSrc = `${framePath}${String(index).padStart(5, "0")}.png`;
-                    const optimizedSrc = `/_next/image?url=${encodeURIComponent(localSrc)}&w=${resolution}&q=${qualityValue}`;
-                    img.src = optimizedSrc;
+                    if(newImages[i]){
+                        newImages[i] = img;
+                    }
+                    else{
+                        newImages.push(img)
+                    }
+                    
+                    return newImages;
                 });
-            } catch (error) {
-                console.error(`Error loading image ${index} with quality ${quality}`, error);
+            } 
+            catch (error) {
+                console.error(`Error loading hi-res image ${i}`, error);
             }
         }
-
-        for (let i = 0; i < totalFrames; i++) {
-            await loadImage(i);
-        }
-
-        
     };
+    
     
 
     useEffect(() => {
@@ -123,9 +162,9 @@ export default function ScrollingVideoComponent() {
     useEffect(() => {
         
         if(dpr){
-            loadImages('low').then(() => {
+            loadLowResImages().then(() => {
                 setShowLoadingScreen(false);
-                loadImages('hi');
+                loadHiResImages();
             });
         }
     
