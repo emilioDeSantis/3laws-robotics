@@ -1,26 +1,33 @@
 "use client";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import React, { useRef, useEffect, useState } from "react";
+import { useScrollProgress } from "@/hooks/useScrollProgess";
+import React, { useRef, useEffect, useState, use } from "react";
 
 const totalFrames = 551;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
-type FrameImage = HTMLImageElement | null
+type FrameImage = HTMLImageElement | null;
 
-
-function createImageSrc(index:number, resolution:number, qualityValue:number){
+function createImageSrc(
+    index: number,
+    resolution: number,
+    qualityValue: number
+) {
     const localSrc = `${framePath}${String(index).padStart(5, "0")}.png`;
-    const optimizedSrc = `/_next/image?url=${encodeURIComponent(localSrc)}&w=${resolution}&q=${qualityValue}`;
+    const optimizedSrc = `/_next/image?url=${encodeURIComponent(
+        localSrc
+    )}&w=${resolution}&q=${qualityValue}`;
 
-    console.log(optimizedSrc);
-    
-    return optimizedSrc
+    return optimizedSrc;
 }
 
-
-export default function ScrollingVideoComponent() {
+export default function ScrollingVideoComponent({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const frameRef = useRef<number>(0);
+    const frameRef = useRef<number>(-1);
     const [loadedImages, setLoadedImages] = useState<FrameImage[]>([]);
 
     // const [loadedImages, setLoadedImages] = useState<FrameImage[]>(new Array(totalFrames).fill({ lowRes: null, hiRes: null }));
@@ -28,123 +35,137 @@ export default function ScrollingVideoComponent() {
     const screenSize = useScreenSize();
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [showLoadingScreen, setShowLoadingScreen] = useState(true);
+    const scrollProgress = useScrollProgress();
 
-
-
-    const drawImageOnCanvas = (frame: FrameImage, index: number) => {
-        const img = frame;
+    const drawImageOnCanvas = (img: FrameImage, index: number) => {
         if (!img || !canvasRef.current) return;
-    
+
         const ctx = canvasRef.current.getContext("2d");
 
-    
         const imageAspectRatio = img.naturalWidth / img.naturalHeight;
-        const canvasAspectRatio = (screenSize.width) / (screenSize.height);
-    
+        const canvasAspectRatio = screenSize.width / screenSize.height;
+
         let drawWidth, drawHeight;
-    
+
         if (canvasAspectRatio < imageAspectRatio) {
-            drawWidth = (screenSize.height) * imageAspectRatio;
+            drawWidth = screenSize.height * imageAspectRatio;
             drawHeight = screenSize.height;
         } else {
             drawWidth = screenSize.width;
-            drawHeight = (screenSize.width) / imageAspectRatio;
+            drawHeight = screenSize.width / imageAspectRatio;
         }
-    
-        const offsetX = ((screenSize.width) - drawWidth) / 2;
-        const offsetY = ((screenSize.height) - drawHeight) / 2;
 
-    
+        const offsetX = (screenSize.width - drawWidth) / 2;
+        const offsetY = (screenSize.height - drawHeight) / 2;
 
-        
         ctx?.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         frameRef.current = index;
     };
 
-
+    const CHUNK_SIZE = 24;
 
     const loadLowResImages = async () => {
-        const resolution = 640;
-        const qualityValue = 1;
-    
+        const resolution = (index: number) => (index < CHUNK_SIZE ? 3840 : 640);
+        const qualityValue = (index: number) => (index < CHUNK_SIZE ? 85 : 1);
+
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
-            
+
             return new Promise((resolve, reject) => {
                 img.onload = () => resolve(img);
                 img.onerror = reject;
-                img.src = createImageSrc(index, resolution, qualityValue);
+                img.src = createImageSrc(
+                    index,
+                    resolution(index),
+                    qualityValue(index)
+                );
             });
         };
-    
+
         const allImagesPromises: Promise<HTMLImageElement>[] = [];
-        const loadedLowResImages: HTMLImageElement[] = new Array(totalFrames).fill(null);
-    
+        const loadedLowResImages: HTMLImageElement[] = new Array(
+            totalFrames
+        ).fill(null);
+
         for (let i = 0; i < totalFrames; i++) {
+            allImagesPromises.push(
+                loadImage(i).then((img) => {
+                    loadedLowResImages[i] = img;
 
-            allImagesPromises.push(loadImage(i).then(img => {
+                    const loadedCount = loadedLowResImages.filter(
+                        (i) => i
+                    ).length;
+                    const progress = (loadedCount / totalFrames) * 100;
+                    setLoadingProgress(Math.floor(progress));
 
-                loadedLowResImages[i]=img;
-    
-                const loadedCount = loadedLowResImages.filter(i=>i).length;
-                const progress = (loadedCount / totalFrames) * 100;
-                setLoadingProgress(Math.floor(progress));
-    
-                return img;
-            }));
+                    return img;
+                })
+            );
         }
-    
+
         try {
             await Promise.all(allImagesPromises);
             setLoadedImages(loadedLowResImages);
-        } 
-        catch (error) {
-            console.error("Error loading low-res images", error);
+        } catch (error) {
+            console.error("Error loading images", error);
         }
     };
-    
-
-
 
     const loadHiResImages = async () => {
         const resolution = 3840;
         const qualityValue = 85;
-    
+
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
-            
+
             return new Promise((resolve, reject) => {
                 img.onload = () => resolve(img);
                 img.onerror = reject;
-
                 img.src = createImageSrc(index, resolution, qualityValue);
-
             });
         };
-    
-        for (let i = 0; i < totalFrames; i++) {
-            try {
-                const img = await loadImage(i);
-                  setLoadedImages(prevImages => {   
-                    const newImages = [...prevImages];
 
-                    if(newImages[i]){
-                        newImages[i] = img;
+        // Helper function to load a chunk of images
+        const loadChunk = async (start: number) => {
+            const promises: Promise<HTMLImageElement>[] = [];
+            for (
+                let i = start;
+                i < start + CHUNK_SIZE && i < totalFrames;
+                i++
+            ) {
+                promises.push(loadImage(i));
+            }
+
+            const images = await Promise.all(promises);
+
+            images.forEach((img, index) => {
+                setLoadedImages((prevImages) => {
+                    const newImages = [...prevImages];
+                    const actualIndex = start + index;
+
+                    if (newImages[actualIndex]) {
+                        newImages[actualIndex] = img;
+                    } else {
+                        newImages.push(img);
                     }
-                    else{
-                        newImages.push(img)
-                    }
-                    
+
                     return newImages;
                 });
-            } 
-            catch (error) {
-                console.error(`Error loading hi-res image ${i}`, error);
+            });
+        };
+
+        // Skip the first chunk and loop through the remaining chunks
+        for (let i = CHUNK_SIZE; i < totalFrames; i += CHUNK_SIZE) {
+            try {
+                await loadChunk(i);
+            } catch (error) {
+                console.error(
+                    `Error loading hi-res image chunk starting from ${i}`,
+                    error
+                );
             }
         }
     };
-    
-    
 
     useEffect(() => {
         // Set device pixel ratio first
@@ -155,120 +176,87 @@ export default function ScrollingVideoComponent() {
         }
     }, []);
 
-    
-
-
-
     useEffect(() => {
-        
-        if(dpr){
+        if (dpr) {
             loadLowResImages().then(() => {
                 setShowLoadingScreen(false);
                 loadHiResImages();
             });
         }
-    
     }, [dpr]);
-    
-    
-    
-    
-
-
-
 
     useEffect(() => {
         if (screenSize.width && canvasRef.current) {
-            console.log('SET CANVAS SCALE', dpr);
-            
+            console.log("SET CANVAS SCALE", dpr);
+
             const ctx = canvasRef.current.getContext("2d");
-            ctx?.setTransform(1, 0, 0, 1, 0, 0);  // Reset the transformation matrix.
+            ctx?.setTransform(1, 0, 0, 1, 0, 0); // Reset the transformation matrix.
             ctx?.scale(dpr, dpr);
         }
     }, [screenSize, dpr, canvasRef.current]);
 
-
-
- 
-
     useEffect(() => {
-        
-    
-        const handleScroll = () => {
 
-            
-            if (!canvasRef.current) return;
-        
-            const scrollY = window.scrollY;
-            const maxScroll = document.body.scrollHeight - window.innerHeight;
-            const frameIndex = Math.floor((scrollY / maxScroll) * totalFrames);
+        if (canvasRef.current) {
+            const framerate = 24;
+
+            const frameIndex = Math.floor(scrollProgress * framerate);
 
 
-            
-        
             if (frameRef.current !== frameIndex && loadedImages[frameIndex]) {
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
             }
-
-        };
-        
-    
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [canvasRef.current, loadedImages, screenSize]); // added screenSize to the dependency array
-       
-    
-    
-    useEffect(() => {
-        
-        if (!showLoadingScreen && loadedImages[frameRef.current]) {
-
-            drawImageOnCanvas(loadedImages[frameRef.current], frameRef.current);
         }
-
-        
-    }, [screenSize, showLoadingScreen, loadedImages]);
-
-
+    }, [canvasRef.current, loadedImages, scrollProgress, showLoadingScreen]);
 
     return (
-        <div style={{ height: "500vh" }}>
+        <div>
+            <div
+                className="scroll-video-container"
+                style={{ height: "100vh", width: "100vw" }}
+            >
+                <div style={{ position: "fixed" }}>
+                    {screenSize.width && screenSize.height ? (
+                        <canvas
+                            ref={canvasRef}
+                            width={screenSize.width * dpr}
+                            height={screenSize.height * dpr}
+                            style={{
+                                width: `${screenSize.width}px`,
+                                height: `${screenSize.height}px`,
+                            }}
+                        ></canvas>
+                    ) : null}
+                </div>
+            </div>
+            {children}
             {showLoadingScreen && (
                 <div
                     style={{
                         position: "fixed",
                         top: 0,
                         left: 0,
-                        height: '100vh',
-                        width: '100vw',
+                        height: "100vh",
+                        width: "100vw",
                         zIndex: 999,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        background: 'black',
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        alignItems: "flex-end",
+                        background: "black",
+                        paddingInline: "4rem",
+                        paddingBlock: "2rem",
                     }}
                 >
-                    <div>Loading: {loadingProgress}%</div>
-                    {/* You can add a progress bar or other visual representation here */}
+                    <div style={{
+                        fontFamily: "korataki",
+                        fontSize: "10rem",
+                        color: "white",
+                        letterSpacing: "0.2em",
+                        lineHeight: "80%",
+                        
+                    }}>{loadingProgress}%</div>
                 </div>
             )}
-
-            <div style={{ position: "fixed", zIndex: -1 }}>
-                {screenSize.width && screenSize.height ? (
-                    <canvas
-                        ref={canvasRef}
-                        width={screenSize.width * dpr}
-                        height={screenSize.height * dpr}
-                    
-                        style={{
-                            width: `${screenSize.width}px`,
-                            height: `${screenSize.height}px`,
-                        }}
-                    ></canvas>
-                ) : null}
-            </div>
         </div>
     );
 }

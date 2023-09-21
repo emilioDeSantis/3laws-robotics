@@ -1,3 +1,6 @@
+import { useScrollProgress } from "@/hooks/useScrollProgess";
+import { use } from "react";
+
 interface ScrollTriggeredTextProps {
     text: string;
     color: string;
@@ -5,7 +8,6 @@ interface ScrollTriggeredTextProps {
     marginTop: string;
     startScroll: number;
     endScroll: number;
-    scrollPosition: number;
     className: string;
 }
 
@@ -16,9 +18,9 @@ const ScrollTriggeredText: React.FC<ScrollTriggeredTextProps> = ({
     marginTop,
     startScroll,
     endScroll,
-    scrollPosition,
     className
 }) => {
+    const scrollProgress = useScrollProgress();
     return (
         <div
             className={`pulsing-element ${className}`}
@@ -26,14 +28,15 @@ const ScrollTriggeredText: React.FC<ScrollTriggeredTextProps> = ({
                 position: "fixed",
                 display: "flex",
                 justifyContent: "flex-start",
+                zIndex: 5,
             }}
         >
             <div
             className="scroll-triggered-text"
                 style={{
                     opacity:
-                        scrollPosition > startScroll &&
-                        scrollPosition < endScroll
+                        scrollProgress > startScroll &&
+                        scrollProgress < endScroll
                             ? "100%"
                             : 0,
                     transition: "opacity 0.3s ease-in-out",

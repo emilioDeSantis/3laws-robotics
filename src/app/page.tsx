@@ -4,150 +4,22 @@ import ScrollTo from "@/components/Home/ScrollTo";
 import ScrollToButton from "@/components/Home/ScrollToButton";
 import ScrollTriggeredText from "@/components/Home/ScrollTriggeredText";
 import Section from "@/components/Home/Section";
+import ScrollingVideoComponent from "@/components/ScrollingVideoComponent";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
+import { useScrollProgress } from "@/hooks/useScrollProgess";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
-import {
-    Link as ScrollLink,
-    animateScroll as scroll,
-    scroller,
-} from "react-scroll";
+import React, { use, useEffect, useRef, useState } from "react";
 
-const throttle = (fn: Function, delay: number) => {
-    let lastCall = 0;
 
-    return function (...args: any[]) {
-        const now = new Date().getTime();
-
-        if (now - lastCall < delay) {
-            return;
-        }
-
-        lastCall = now;
-        return fn(...args);
-    };
-};
-
-// function debounce(func: (...args: any[]) => void, wait: number) {
-//     let timeout: NodeJS.Timeout;
-//     return function (...args: any[]) {
-//         const context = this;
-//         clearTimeout(timeout);
-//         timeout = setTimeout(() => func.apply(context, args), wait);
-//     };
-// }
 
 export default function HomePage() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [scrollPosition, setScrollPosition] = useState<number>(0);
-    const [scrollScale, setScrollScale] = useState<number>(1.44);
-    const [windowWidth, setWindowWidth] = useState<number>(1000);
-    // need to fix this^ it doenst updta eteh scroll scale before its locked in
-    const [mobile, setMobile] = useState<boolean>(true);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            // Cleanup to avoid potential memory leaks
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []); // Empty dependency array means this useEffect runs once when the component mounts, and the cleanup runs when it unmounts
-
-    useEffect(() => {
-        if (windowWidth <= 768) {
-            setScrollScale(0.9);
-            setMobile(true);
-        } else {
-            setScrollScale(1.44);
-            setMobile(false);
-        }
-    }, [windowWidth]);
-
-    useEffect(() => {
-        const handleScroll = throttle(() => {
-            window.requestAnimationFrame(() => {
-  
-            
-            const viewportWidth = window.innerWidth;
-            const scrollFactor = viewportWidth;
-
-            setScrollPosition(window.pageYOffset / scrollFactor);
-
-            if (videoRef.current) {
-                const scrollPos = window.pageYOffset;
-                const scrollPercent = scrollPos / scrollFactor;
-                videoRef.current.currentTime = scrollPercent * scrollScale;
-            }});
-        }, 40);
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [scrollScale]);
-
-    // const lastScrollY = useRef(0);
-
-// const handleScroll = debounce(() => {
-//     const currentScrollY = window.pageYOffset;
-//     if (currentScrollY !== lastScrollY.current) {
-//         window.requestAnimationFrame(() => {
-//             const viewportWidth = window.innerWidth;
-//             const scrollFactor = viewportWidth;
-
-//             setScrollPosition(currentScrollY / scrollFactor);
-
-//             if (videoRef.current) {
-//                 const scrollPos = currentScrollY;
-//                 const scrollPercent = scrollPos / scrollFactor;
-//                 videoRef.current.currentTime = scrollPercent * scrollScale;
-//             }
-
-//             lastScrollY.current = currentScrollY;
-//         });
-//     }
-// }, 40);
-
-// useEffect(() => {
-//     window.addEventListener("scroll", handleScroll);
-//     return () => {
-//         window.removeEventListener("scroll", handleScroll);
-//     };
-// }, [scrollScale]);
-
-
     return (
         <div
             style={{
                 color: "white",
             }}
         >
-            <div style={{
-                height: '100vh',
-                width: '100vw',
-                background: 'black',
-                position: 'fixed',
-            }}/>
-            <div className="scroll-video-container">
-            {/* aspect ratio on desktop is 100/56 of original video */}
-                <video
-                    autoPlay={mobile ? true : false}
-                    ref={videoRef}
-                    style={{
-                        position: "absolute",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                    }}
-                    // src="/0000-05502.mp4"
-                    src="/output4.mp4"
-                />
-            </div>
+                <ScrollingVideoComponent/>
 
             <ScrollTriggeredText
                 text="Collision"
@@ -155,9 +27,8 @@ export default function HomePage() {
                 marginLeft="60vw"
                 marginTop="20vw"
                 className="collision"
-                startScroll={3 / scrollScale}
-                endScroll={4.2 / scrollScale}
-                scrollPosition={scrollPosition}
+                startScroll={3}
+                endScroll={4.2}
             />
             <ScrollTriggeredText
                 text="down time"
@@ -165,28 +36,17 @@ export default function HomePage() {
                 marginLeft="16vw"
                 marginTop="18vw"
                 className="down-time"
-                startScroll={5.05 / scrollScale}
-                endScroll={7.0 / scrollScale}
-                scrollPosition={scrollPosition}
+                startScroll={5.05}
+                endScroll={7.0}
             />
-            {/* <ScrollTriggeredText
-                text="Ready"
-                color="#9f9"
-                marginLeft="20vw"
-                marginTop="20vw"
-                startScroll={7.08 / scrollScale}
-                endScroll={7.75 / scrollScale}
-                scrollPosition={scrollPosition}
-            /> */}
             <ScrollTriggeredText
                 text="activating..."
                 color="#6ff"
                 className="activating"
                 marginLeft="48vw"
                 marginTop="16vw"
-                startScroll={8.375 / scrollScale}
-                endScroll={10.1 / scrollScale}
-                scrollPosition={scrollPosition}
+                startScroll={8.375}
+                endScroll={10.1}
             />
             <ScrollTriggeredText
                 text="Activated"
@@ -194,9 +54,8 @@ export default function HomePage() {
                 className="activating"
                 marginLeft="48vw"
                 marginTop="16vw"
-                startScroll={10.42 / scrollScale}
-                endScroll={11.2 / scrollScale}
-                scrollPosition={scrollPosition}
+                startScroll={10.42}
+                endScroll={11.2}
             />
             <ScrollTriggeredText
                 text="Obstacle avoided"
@@ -204,9 +63,8 @@ export default function HomePage() {
                 className="obstacle-avoided"
                 marginLeft="58vw"
                 marginTop="16vw"
-                startScroll={13.6 / scrollScale}
-                endScroll={15.3 / scrollScale}
-                scrollPosition={scrollPosition}
+                startScroll={13.6}
+                endScroll={15.3}
             />
             <div
                 className="page-padding"

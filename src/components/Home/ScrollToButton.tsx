@@ -31,6 +31,7 @@ const ScrollToButton: React.FC<ScrollToProps> = ({
                 flexDirection :'column',
                 justifyContent: 'flex-end',
                 opacity: 0.8,
+                zIndex: 7,
             }}
         >
             <div
