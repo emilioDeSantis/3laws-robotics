@@ -1,9 +1,10 @@
 "use client";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { useScrollProgress } from "@/hooks/useScrollProgess";
 import React, { useRef, useEffect, useState, use } from "react";
 
-const totalFrames = 551;
+const totalFrames = 5;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 type FrameImage = HTMLImageElement | null;
@@ -36,6 +37,7 @@ export default function ScrollingVideoComponent({
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [showLoadingScreen, setShowLoadingScreen] = useState(true);
     const scrollProgress = useScrollProgress();
+    const isDesktop = useIsDesktop();
 
     const drawImageOnCanvas = (img: FrameImage, index: number) => {
         if (!img || !canvasRef.current) return;
@@ -63,10 +65,17 @@ export default function ScrollingVideoComponent({
     };
 
     const CHUNK_SIZE = 24;
+    
+    const highRes = 3840;
+    const medRes = 1200;
+    const lowRes = 640;
+    const highQuality = 85;
+    const medQuality = 60;
+    const lowQuality = 1;
 
     const loadLowResImages = async () => {
-        const resolution = (index: number) => (index < CHUNK_SIZE ? 3840 : 640);
-        const qualityValue = (index: number) => (index < CHUNK_SIZE ? 85 : 1);
+        const resolution = (index: number) => (index < CHUNK_SIZE ? isDesktop ? highRes : medRes : lowRes);
+        const qualityValue = (index: number) => (index < CHUNK_SIZE ? isDesktop ? highQuality : medQuality : lowQuality);
 
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
@@ -112,8 +121,6 @@ export default function ScrollingVideoComponent({
     };
 
     const loadHiResImages = async () => {
-        const resolution = 3840;
-        const qualityValue = 85;
 
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
@@ -121,7 +128,7 @@ export default function ScrollingVideoComponent({
             return new Promise((resolve, reject) => {
                 img.onload = () => resolve(img);
                 img.onerror = reject;
-                img.src = createImageSrc(index, resolution, qualityValue);
+                img.src = createImageSrc(index, isDesktop ? highRes : medRes, isDesktop ? highQuality : medQuality);
             });
         };
 
@@ -177,13 +184,13 @@ export default function ScrollingVideoComponent({
     }, []);
 
     useEffect(() => {
-        if (dpr) {
+        if (dpr && isDesktop !== null) {
             loadLowResImages().then(() => {
                 setShowLoadingScreen(false);
                 loadHiResImages();
             });
         }
-    }, [dpr]);
+    }, [dpr, isDesktop]);
 
     useEffect(() => {
         if (screenSize.width && canvasRef.current) {
@@ -208,6 +215,21 @@ export default function ScrollingVideoComponent({
             }
         }
     }, [canvasRef.current, loadedImages, scrollProgress, showLoadingScreen]);
+
+
+    useEffect(() => {
+
+        if (canvasRef.current) {
+            const framerate = 24;
+
+            const frameIndex = Math.floor(scrollProgress * framerate);
+
+
+            if (loadedImages[frameIndex]) {
+                drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
+            }
+        }
+    }, [screenSize]);
 
     return (
         <div>
@@ -243,13 +265,12 @@ export default function ScrollingVideoComponent({
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
                         background: "black",
-                        paddingInline: "4rem",
-                        paddingBlock: "2rem",
                     }}
                 >
-                    <div style={{
+                    <div 
+                    className="loading-text"
+                    style={{
                         fontFamily: "korataki",
-                        fontSize: "10rem",
                         color: "white",
                         letterSpacing: "0.2em",
                         lineHeight: "80%",

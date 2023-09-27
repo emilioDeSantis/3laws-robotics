@@ -1,0 +1,23 @@
+{
+  "id": "privacy_paragragh",
+  "type": "SharedSlice",
+  "name": "PrivacyParagraph",
+  "description": "PrivacyParagragh",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "Text",
+          "config": { "label": "Text", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

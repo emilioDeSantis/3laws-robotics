@@ -11,6 +11,7 @@ const CaseStudies: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 width: "100vw",
+                paddingBottom: "6rem",
             }}
         >
             <Title>See our tech in action</Title>
@@ -30,7 +31,7 @@ const CaseStudies: React.FC = () => {
                     }}
                 >
                     <Case
-                        image="/example.png"
+                        image="/flippy2.png"
                         alt="example"
                         title="Flippy 2"
                         company="Miso Robotics"
@@ -38,7 +39,7 @@ const CaseStudies: React.FC = () => {
                         video="/short2.mp4"
                     />
                     <Case
-                        image="/example.png"
+                        image="/canyon.png"
                         alt="example"
                         title="Canyon 336"
                         company="Grady-white"
@@ -46,11 +47,19 @@ const CaseStudies: React.FC = () => {
                         video="/short2.mp4"
                     />
                     <Case
-                        image="/example.png"
+                        image="/unitree.png"
                         alt="example"
-                        title="Flippy 2"
-                        company="Miso Robotics"
-                        description="Robotic arm kitchen application"
+                        title="A1"
+                        company="Unitree"
+                        description="Robot obstacle avoidance"
+                        video="/short2.mp4"
+                    />
+                    <Case
+                        image="/drone.png"
+                        alt="example"
+                        title="Racing Drone"
+                        company="3Laws Robotics"
+                        description="Racing drone geofencing above 100kph"
                         video="/short2.mp4"
                     />
                 </div>

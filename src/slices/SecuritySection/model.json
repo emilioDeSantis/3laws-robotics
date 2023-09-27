@@ -1,0 +1,28 @@
+{
+  "id": "security_section",
+  "type": "SharedSlice",
+  "name": "SecuritySection",
+  "description": "SecuritySection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
+        }
+      },
+      "items": {
+        "paragraph": {
+          "type": "Text",
+          "config": { "label": "Paragraph", "placeholder": "" }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "security_paragragh",
+  "type": "SharedSlice",
+  "name": "SecurityParagraph",
+  "description": "SecurityParagragh",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "Text",
+          "config": { "label": "Text", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

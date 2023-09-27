@@ -221,7 +221,182 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = AboutDocument | BlogPostDocument;
+type PrivacyDocumentDataSlicesSlice =
+  | PrivacyParagraghSlice
+  | PrivacySubtitleSlice
+  | PrivacyBulletListSlice;
+
+/**
+ * Content for Privacy documents
+ */
+interface PrivacyDocumentData {
+  /**
+   * Title field in *Privacy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Privacy*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PrivacyDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Privacy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: privacy.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Privacy*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Privacy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: privacy.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Privacy document from Prismic
+ *
+ * - **API ID**: `privacy`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PrivacyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PrivacyDocumentData>,
+    "privacy",
+    Lang
+  >;
+
+type SecurityDocumentDataSlicesSlice =
+  | SecurityParagraghSlice
+  | SecuritySectionSlice
+  | SecurityBulletListSlice;
+
+/**
+ * Content for Security documents
+ */
+interface SecurityDocumentData {
+  /**
+   * Title field in *Security*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Last Updated field in *Security*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security.last_updated
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  last_updated: prismic.DateField;
+
+  /**
+   * Slice Zone field in *Security*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SecurityDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Security*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: security.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Security*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Security*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: security.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Security document from Prismic
+ *
+ * - **API ID**: `security`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SecurityDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SecurityDocumentData>,
+    "security",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | AboutDocument
+  | BlogPostDocument
+  | PrivacyDocument
+  | SecurityDocument;
 
 /**
  * Primary content in *BlogPostBulletList → Items*
@@ -514,6 +689,321 @@ export type BlogPostSubTitleSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *PrivacyBulletList → Primary*
+ */
+export interface PrivacyBulletListSliceDefaultPrimary {
+  /**
+   * Title field in *PrivacyBulletList → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_bullet_list.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *PrivacyBulletList → Items*
+ */
+export interface PrivacyBulletListSliceDefaultItem {
+  /**
+   * Bullet field in *PrivacyBulletList → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_bullet_list.items[].bullet
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bullet: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for PrivacyBulletList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacyBulletListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PrivacyBulletListSliceDefaultPrimary>,
+  Simplify<PrivacyBulletListSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *PrivacyBulletList*
+ */
+type PrivacyBulletListSliceVariation = PrivacyBulletListSliceDefault;
+
+/**
+ * PrivacyBulletList Shared Slice
+ *
+ * - **API ID**: `privacy_bullet_list`
+ * - **Description**: PrivacyBulletList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacyBulletListSlice = prismic.SharedSlice<
+  "privacy_bullet_list",
+  PrivacyBulletListSliceVariation
+>;
+
+/**
+ * Primary content in *PrivacyParagraph → Primary*
+ */
+export interface PrivacyParagraghSliceDefaultPrimary {
+  /**
+   * Text field in *PrivacyParagraph → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_paragragh.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for PrivacyParagraph Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacyParagraghSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PrivacyParagraghSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PrivacyParagraph*
+ */
+type PrivacyParagraghSliceVariation = PrivacyParagraghSliceDefault;
+
+/**
+ * PrivacyParagraph Shared Slice
+ *
+ * - **API ID**: `privacy_paragragh`
+ * - **Description**: PrivacyParagragh
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacyParagraghSlice = prismic.SharedSlice<
+  "privacy_paragragh",
+  PrivacyParagraghSliceVariation
+>;
+
+/**
+ * Primary content in *PrivacySubtitle → Primary*
+ */
+export interface PrivacySubtitleSliceDefaultPrimary {
+  /**
+   * Subtitle field in *PrivacySubtitle → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_subtitle.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for PrivacySubtitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySubtitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PrivacySubtitleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PrivacySubtitle*
+ */
+type PrivacySubtitleSliceVariation = PrivacySubtitleSliceDefault;
+
+/**
+ * PrivacySubtitle Shared Slice
+ *
+ * - **API ID**: `privacy_subtitle`
+ * - **Description**: PrivacySubtitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySubtitleSlice = prismic.SharedSlice<
+  "privacy_subtitle",
+  PrivacySubtitleSliceVariation
+>;
+
+/**
+ * Primary content in *SecurityNumberedList → Primary*
+ */
+export interface SecurityBulletListSliceDefaultPrimary {
+  /**
+   * Title field in *SecurityNumberedList → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security_bullet_list.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *SecurityNumberedList → Items*
+ */
+export interface SecurityBulletListSliceDefaultItem {
+  /**
+   * Bullet field in *SecurityNumberedList → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security_bullet_list.items[].bullet
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bullet: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SecurityNumberedList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecurityBulletListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SecurityBulletListSliceDefaultPrimary>,
+  Simplify<SecurityBulletListSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SecurityNumberedList*
+ */
+type SecurityBulletListSliceVariation = SecurityBulletListSliceDefault;
+
+/**
+ * SecurityNumberedList Shared Slice
+ *
+ * - **API ID**: `security_bullet_list`
+ * - **Description**: SecurityBulletList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecurityBulletListSlice = prismic.SharedSlice<
+  "security_bullet_list",
+  SecurityBulletListSliceVariation
+>;
+
+/**
+ * Primary content in *SecurityParagraph → Primary*
+ */
+export interface SecurityParagraghSliceDefaultPrimary {
+  /**
+   * Text field in *SecurityParagraph → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security_paragragh.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SecurityParagraph Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecurityParagraghSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SecurityParagraghSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SecurityParagraph*
+ */
+type SecurityParagraghSliceVariation = SecurityParagraghSliceDefault;
+
+/**
+ * SecurityParagraph Shared Slice
+ *
+ * - **API ID**: `security_paragragh`
+ * - **Description**: SecurityParagragh
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecurityParagraghSlice = prismic.SharedSlice<
+  "security_paragragh",
+  SecurityParagraghSliceVariation
+>;
+
+/**
+ * Primary content in *SecuritySection → Primary*
+ */
+export interface SecuritySectionSliceDefaultPrimary {
+  /**
+   * Title field in *SecuritySection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *SecuritySection → Items*
+ */
+export interface SecuritySectionSliceDefaultItem {
+  /**
+   * Paragraph field in *SecuritySection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: security_section.items[].paragraph
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  paragraph: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SecuritySection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecuritySectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SecuritySectionSliceDefaultPrimary>,
+  Simplify<SecuritySectionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SecuritySection*
+ */
+type SecuritySectionSliceVariation = SecuritySectionSliceDefault;
+
+/**
+ * SecuritySection Shared Slice
+ *
+ * - **API ID**: `security_section`
+ * - **Description**: SecuritySection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SecuritySectionSlice = prismic.SharedSlice<
+  "security_section",
+  SecuritySectionSliceVariation
+>;
+
+/**
  * Primary content in *TimelineImage → Primary*
  */
 export interface TimelineImageSliceDefaultPrimary {
@@ -799,6 +1289,12 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      PrivacyDocument,
+      PrivacyDocumentData,
+      PrivacyDocumentDataSlicesSlice,
+      SecurityDocument,
+      SecurityDocumentData,
+      SecurityDocumentDataSlicesSlice,
       AllDocumentTypes,
       BlogPostBulletListSlice,
       BlogPostBulletListSliceDefaultItem,
@@ -824,6 +1320,33 @@ declare module "@prismicio/client" {
       BlogPostSubTitleSliceDefaultPrimary,
       BlogPostSubTitleSliceVariation,
       BlogPostSubTitleSliceDefault,
+      PrivacyBulletListSlice,
+      PrivacyBulletListSliceDefaultPrimary,
+      PrivacyBulletListSliceDefaultItem,
+      PrivacyBulletListSliceVariation,
+      PrivacyBulletListSliceDefault,
+      PrivacyParagraghSlice,
+      PrivacyParagraghSliceDefaultPrimary,
+      PrivacyParagraghSliceVariation,
+      PrivacyParagraghSliceDefault,
+      PrivacySubtitleSlice,
+      PrivacySubtitleSliceDefaultPrimary,
+      PrivacySubtitleSliceVariation,
+      PrivacySubtitleSliceDefault,
+      SecurityBulletListSlice,
+      SecurityBulletListSliceDefaultPrimary,
+      SecurityBulletListSliceDefaultItem,
+      SecurityBulletListSliceVariation,
+      SecurityBulletListSliceDefault,
+      SecurityParagraghSlice,
+      SecurityParagraghSliceDefaultPrimary,
+      SecurityParagraghSliceVariation,
+      SecurityParagraghSliceDefault,
+      SecuritySectionSlice,
+      SecuritySectionSliceDefaultPrimary,
+      SecuritySectionSliceDefaultItem,
+      SecuritySectionSliceVariation,
+      SecuritySectionSliceDefault,
       TimelineImageSlice,
       TimelineImageSliceDefaultPrimary,
       TimelineImageSliceVariation,

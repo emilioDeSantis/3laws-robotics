@@ -5,7 +5,7 @@ import { useScreenSize } from "./useScreenSize";
 
 export const useIsDesktop = () => {
     const { width } = useScreenSize();
-    const [isDesktop, setIsDesktop] = useState(false);
+    const [isDesktop, setIsDesktop] = useState<boolean|null>(null);
 
     useEffect(() => {
         setIsDesktop(width > 768);

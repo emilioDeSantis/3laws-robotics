@@ -1,0 +1,28 @@
+{
+  "id": "privacy_bullet_list",
+  "type": "SharedSlice",
+  "name": "PrivacyBulletList",
+  "description": "PrivacyBulletList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
+        }
+      },
+      "items": {
+        "bullet": {
+          "type": "Text",
+          "config": { "label": "Bullet", "placeholder": "" }
+        }
+      }
+    }
+  ]
+}

@@ -56,6 +56,7 @@ const Case: React.FC<CaseProps> = ({
             </h2>
             <video
             controls
+            poster={image}
                 style={{
                     width: "100%",
                     height: "auto",

@@ -17,6 +17,7 @@ export default async function Blogs() {
                 display: "flex",
                 flexDirection: "column",
                 width: "100vw",
+                paddingBottom: "6rem",
             }}
         >
             <Title>Industry Insights</Title>
