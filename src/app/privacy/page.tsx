@@ -4,12 +4,11 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import PageContentContainer from "@/components/PageContentContainer";
-import Title from "@/components/Title";
-import Founder from "@/components/About/Founder";
 
-export default async function Privacy() {
+export default async function Page() {
     const client = createClient();
     const page = await client.getSingle("privacy");
+    
 
     return (
         <div
@@ -21,22 +20,22 @@ export default async function Privacy() {
             }}
         >
             <PageContentContainer>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1rem',
-                    paddingBlock: '8rem',
-                    paddingBottom: '2rem',
-                }}>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+                paddingBlock: '8rem',
+                paddingBottom: '2rem',
+            }}>
 
-            <h1 style={{
-                fontSize: '3rem',
-                fontWeight: 700,
-                lineHeight: '120%',
-                marginBottom: '2rem',
-            }}>{page.data.title}</h1>
-                <SliceZone slices={page.data.slices} components={components} /></div>
-            </PageContentContainer>
+        <h1 style={{
+            fontSize: '3rem',
+            fontWeight: 700,
+            lineHeight: '120%',
+            marginBottom: '2rem',
+        }}>{page.data.title}</h1>
+            <SliceZone slices={page.data.slices} components={components} /></div>
+        </PageContentContainer>
         </div>
     );
 }
