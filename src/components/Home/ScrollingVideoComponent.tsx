@@ -4,7 +4,7 @@ import { useScreenSize } from "@/hooks/useScreenSize";
 import { useScrollProgress } from "@/hooks/useScrollProgess";
 import React, { useRef, useEffect, useState, use } from "react";
 
-const totalFrames = 5;
+const totalFrames = 551;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 type FrameImage = HTMLImageElement | null;
