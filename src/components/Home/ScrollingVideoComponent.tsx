@@ -251,7 +251,7 @@ export default function ScrollingVideoComponent({
                     ) : null}
                 </div>
             </div>
-            {/* {children} */}
+            {children}
             {showLoadingScreen && (
                 <div
                     style={{
