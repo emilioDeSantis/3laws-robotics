@@ -13,8 +13,7 @@ import React, { use, useEffect, useRef, useState } from "react";
 export default function HomePage() {
     return (
         <ScrollingVideoComponent>
-            <div></div>
-            {/* <div
+            <div
                 className="homepage-container"
                 style={{
                     color: "white",
@@ -309,7 +308,7 @@ export default function HomePage() {
                         text="See our tech in action →"
                     />
                 </div>
-            </div> */}
+            </div>
         </ScrollingVideoComponent>
     );
 }
