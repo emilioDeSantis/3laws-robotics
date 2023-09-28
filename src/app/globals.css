@@ -105,13 +105,7 @@
     line-height: 150%;
 }
 .scroll-video-container {
-    position: fixed;
-    top: -42vw;
-    left: 0;
-    height: 136vw;
-    width: 100%;
-    overflow: hidden;
-    mix-blend-mode: lighten;
+    top: -64vw;
 }
 
 .scroll-triggered-text {
@@ -326,7 +320,6 @@
 
     .scroll-video-container {
         top: 0;
-        height: 100%;
     }
 
     .scroll-triggered-text {

@@ -49,12 +49,21 @@ export default function ScrollingVideoComponent({
 
         let drawWidth, drawHeight;
 
-        if (canvasAspectRatio < imageAspectRatio) {
-            drawWidth = screenSize.height * imageAspectRatio;
-            drawHeight = screenSize.height;
-        } else {
+        // if (canvasAspectRatio < imageAspectRatio) {
+        //     drawWidth = screenSize.height * imageAspectRatio;
+        //     drawHeight = screenSize.height;
+        // } else {
+        //     drawWidth = screenSize.width;
+        //     drawHeight = screenSize.width / imageAspectRatio;
+        // }
+
+        const mobileZoomFactor = 1.46;
+        if (isDesktop) {
             drawWidth = screenSize.width;
             drawHeight = screenSize.width / imageAspectRatio;
+        } else {
+            drawWidth = screenSize.width * mobileZoomFactor;
+            drawHeight = (screenSize.width / imageAspectRatio) * mobileZoomFactor;
         }
 
         const offsetX = (screenSize.width - drawWidth) / 2;
@@ -65,7 +74,7 @@ export default function ScrollingVideoComponent({
     };
 
     const CHUNK_SIZE = 24;
-    
+
     const highRes = 3840;
     const medRes = 1200;
     const lowRes = 640;
@@ -74,8 +83,14 @@ export default function ScrollingVideoComponent({
     const lowQuality = 1;
 
     const loadLowResImages = async () => {
-        const resolution = (index: number) => (index < CHUNK_SIZE ? isDesktop ? highRes : medRes : lowRes);
-        const qualityValue = (index: number) => (index < CHUNK_SIZE ? isDesktop ? highQuality : medQuality : lowQuality);
+        const resolution = (index: number) =>
+            index < CHUNK_SIZE ? (isDesktop ? highRes : medRes) : lowRes;
+        const qualityValue = (index: number) =>
+            index < CHUNK_SIZE
+                ? isDesktop
+                    ? highQuality
+                    : medQuality
+                : lowQuality;
 
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
@@ -121,14 +136,17 @@ export default function ScrollingVideoComponent({
     };
 
     const loadHiResImages = async () => {
-
         const loadImage = async (index: number): Promise<HTMLImageElement> => {
             const img = new Image();
 
             return new Promise((resolve, reject) => {
                 img.onload = () => resolve(img);
                 img.onerror = reject;
-                img.src = createImageSrc(index, isDesktop ? highRes : medRes, isDesktop ? highQuality : medQuality);
+                img.src = createImageSrc(
+                    index,
+                    isDesktop ? highRes : medRes,
+                    isDesktop ? highQuality : medQuality
+                );
             });
         };
 
@@ -203,12 +221,10 @@ export default function ScrollingVideoComponent({
     }, [screenSize, dpr, canvasRef.current]);
 
     useEffect(() => {
-
         if (canvasRef.current) {
             const framerate = 24;
 
             const frameIndex = Math.floor(scrollProgress * framerate);
-
 
             if (frameRef.current !== frameIndex && loadedImages[frameIndex]) {
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
@@ -216,40 +232,45 @@ export default function ScrollingVideoComponent({
         }
     }, [canvasRef.current, loadedImages, scrollProgress, showLoadingScreen]);
 
-
     useEffect(() => {
-
         if (canvasRef.current) {
             const framerate = 24;
 
             const frameIndex = Math.floor(scrollProgress * framerate);
 
-
             if (loadedImages[frameIndex]) {
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
             }
         }
-    }, [screenSize]);
+    }, [screenSize, isDesktop]);
 
     return (
         <div>
             <div
                 className="scroll-video-container"
-                style={{ height: "100vh", width: "100vw" }}
+                style={{
+                    position: "fixed",
+                    left: 0,
+                    height: "100%",
+                    width: "100%",
+                    overflow: "hidden",
+                }}
             >
-                <div style={{ position: "fixed" }}>
-                    {screenSize.width && screenSize.height ? (
-                        <canvas
-                            ref={canvasRef}
-                            width={screenSize.width * dpr}
-                            height={screenSize.height * dpr}
-                            style={{
-                                width: `${screenSize.width}px`,
-                                height: `${screenSize.height}px`,
-                            }}
-                        ></canvas>
-                    ) : null}
-                </div>
+                {/* <div style={{ position: "fixed",
+                                background: 'red', }}> */}
+                {screenSize.width && screenSize.height ? (
+                    <canvas
+                        ref={canvasRef}
+                        width={screenSize.width * dpr}
+                        height={screenSize.height * dpr}
+                        style={{
+                            width: `${screenSize.width}px`,
+                            height: `${screenSize.height}px`,
+                            mixBlendMode: "lighten",
+                        }}
+                    ></canvas>
+                ) : null}
+                {/* </div> */}
             </div>
             {children}
             {showLoadingScreen && (
@@ -267,15 +288,17 @@ export default function ScrollingVideoComponent({
                         background: "black",
                     }}
                 >
-                    <div 
-                    className="loading-text"
-                    style={{
-                        fontFamily: "korataki",
-                        color: "white",
-                        letterSpacing: "0.2em",
-                        lineHeight: "80%",
-                        
-                    }}>{loadingProgress}%</div>
+                    <div
+                        className="loading-text"
+                        style={{
+                            fontFamily: "korataki",
+                            color: "white",
+                            letterSpacing: "0.2em",
+                            lineHeight: "80%",
+                        }}
+                    >
+                        {loadingProgress}%
+                    </div>
                 </div>
             )}
         </div>
