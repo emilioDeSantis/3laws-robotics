@@ -190,7 +190,7 @@ export default function ScrollingVideoComponent({
                 loadHiResImages();
             });
         }
-    }, [dpr, isDesktop]);
+    }, [dpr, isDesktop, loadHiResImages, loadLowResImages]);
 
     useEffect(() => {
         if (screenSize.width && canvasRef.current) {
@@ -214,7 +214,7 @@ export default function ScrollingVideoComponent({
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
             }
         }
-    }, [canvasRef.current, loadedImages, scrollProgress, showLoadingScreen]);
+    }, [canvasRef.current, loadedImages, scrollProgress, showLoadingScreen, drawImageOnCanvas]);
 
 
     useEffect(() => {
@@ -229,7 +229,7 @@ export default function ScrollingVideoComponent({
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
             }
         }
-    }, [screenSize]);
+    }, [screenSize, drawImageOnCanvas,]);
 
     return (
         <div>
@@ -251,7 +251,7 @@ export default function ScrollingVideoComponent({
                     ) : null}
                 </div>
             </div>
-            {children}
+            {/* {children} */}
             {showLoadingScreen && (
                 <div
                     style={{
