@@ -67,7 +67,7 @@ export default function ScrollingVideoComponent({
         }
 
         const offsetX = (screenSize.width - drawWidth) / 2;
-        const offsetY = (screenSize.height - drawHeight) / 2;
+        const offsetY = isDesktop ? (screenSize.height - drawHeight) / 2 : 0;
 
         ctx?.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         frameRef.current = index;
@@ -224,7 +224,8 @@ export default function ScrollingVideoComponent({
         if (canvasRef.current) {
             const framerate = 24;
 
-            const frameIndex = Math.floor(scrollProgress * framerate);
+            let frameIndex = Math.floor(scrollProgress * framerate);
+            if (frameIndex >= totalFrames) frameIndex = totalFrames - 1;
 
             if (frameRef.current !== frameIndex && loadedImages[frameIndex]) {
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
@@ -236,7 +237,8 @@ export default function ScrollingVideoComponent({
         if (canvasRef.current) {
             const framerate = 24;
 
-            const frameIndex = Math.floor(scrollProgress * framerate);
+            let frameIndex = Math.floor(scrollProgress * framerate);
+            if (frameIndex >= totalFrames) frameIndex = totalFrames - 1;
 
             if (loadedImages[frameIndex]) {
                 drawImageOnCanvas(loadedImages[frameIndex], frameIndex);
@@ -251,13 +253,12 @@ export default function ScrollingVideoComponent({
                 style={{
                     position: "fixed",
                     left: 0,
-                    height: "100%",
+                    height: "260vw",
                     width: "100%",
                     overflow: "hidden",
+                    background: "linear-gradient(0deg, rgb(0,0,0) 45%, rgb(255,255,255) 60%)",
                 }}
             >
-                {/* <div style={{ position: "fixed",
-                                background: 'red', }}> */}
                 {screenSize.width && screenSize.height ? (
                     <canvas
                         ref={canvasRef}
@@ -266,11 +267,10 @@ export default function ScrollingVideoComponent({
                         style={{
                             width: `${screenSize.width}px`,
                             height: `${screenSize.height}px`,
-                            mixBlendMode: "lighten",
+                            mixBlendMode: 'multiply',
                         }}
                     ></canvas>
                 ) : null}
-                {/* </div> */}
             </div>
             {children}
             {showLoadingScreen && (
