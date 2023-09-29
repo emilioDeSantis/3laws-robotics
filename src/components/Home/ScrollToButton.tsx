@@ -57,7 +57,6 @@ const ScrollToButton: React.FC<ScrollToProps> = ({
                         fontWeight: 200,
                         fontSize: "0.8rem",
                         letterSpacing: "0.09em",
-                        textTransform: "capitalize",
                         borderRadius: "10px",
                         zIndex: 201,
                     }}

@@ -1,0 +1,247 @@
+{
+  "id": "home",
+  "label": "Home",
+  "format": "page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "dynamic_environment_card": {
+        "type": "Group",
+        "config": {
+          "label": "Dynamic Environment Card",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": { "label": "Title", "placeholder": "" }
+            },
+            "text": {
+              "type": "Text",
+              "config": { "label": "Text", "placeholder": "" }
+            },
+            "link_text": {
+              "type": "Text",
+              "config": { "label": "Link Text", "placeholder": "" }
+            },
+            "link_href": {
+              "type": "Text",
+              "config": { "label": "Link href", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "collision_card": {
+        "type": "Group",
+        "config": {
+          "label": "Collision Card",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": { "label": "Title", "placeholder": "" }
+            },
+            "text": {
+              "type": "Text",
+              "config": { "label": "Text", "placeholder": "" }
+            },
+            "link_text": {
+              "type": "Text",
+              "config": { "label": "Link Text", "placeholder": "" }
+            },
+            "link_href": {
+              "type": "Text",
+              "config": { "label": "Link href", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "introducing_safety_supervisor_card": {
+        "type": "Group",
+        "config": {
+          "label": "Introducing Safety supervisor Card",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": { "label": "title", "placeholder": "" }
+            },
+            "text": {
+              "type": "Text",
+              "config": { "label": "text", "placeholder": "" }
+            },
+            "link_text": {
+              "type": "Text",
+              "config": { "label": "link text", "placeholder": "" }
+            },
+            "link_href": {
+              "type": "Text",
+              "config": { "label": "Link href", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "more_info_about_supervisor_card": {
+        "type": "Group",
+        "config": {
+          "label": "More Info about supervisor card",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": { "label": "Title", "placeholder": "" }
+            },
+            "text": {
+              "type": "Text",
+              "config": { "label": "text", "placeholder": "" }
+            },
+            "link_text": {
+              "type": "Text",
+              "config": { "label": "link text", "placeholder": "" }
+            },
+            "link_href": {
+              "type": "Text",
+              "config": { "label": "link href", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "metrics_card": {
+        "type": "Group",
+        "config": {
+          "label": "Metrics card",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": { "label": "title", "placeholder": "" }
+            },
+            "text": {
+              "type": "Text",
+              "config": { "label": "text", "placeholder": "" }
+            },
+            "link_text": {
+              "type": "Text",
+              "config": { "label": "link text", "placeholder": "" }
+            },
+            "link_href": {
+              "type": "Text",
+              "config": { "label": "link href", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "scroll_to_next_section_buttons": {
+        "type": "Group",
+        "config": {
+          "label": "Scroll to next section buttons",
+          "fields": {
+            "scroll_or_click_to_explore": {
+              "type": "Text",
+              "config": {
+                "label": "Scroll Or Click To Explore",
+                "placeholder": ""
+              }
+            },
+            "enter_dynamic_environment": {
+              "type": "Text",
+              "config": {
+                "label": "Enter Dynamic Environment",
+                "placeholder": ""
+              }
+            },
+            "witness_the_impact": {
+              "type": "Text",
+              "config": { "label": "Witness The Impact", "placeholder": "" }
+            },
+            "face_the_repercussions": {
+              "type": "Text",
+              "config": { "label": "Face The Repercussions", "placeholder": "" }
+            },
+            "activate_safety_supervisor": {
+              "type": "Text",
+              "config": {
+                "label": "Activate Safety Supervisor",
+                "placeholder": ""
+              }
+            },
+            "reenter_dynamic_environment": {
+              "type": "Text",
+              "config": {
+                "label": "Reenter Dynamic Environment",
+                "placeholder": ""
+              }
+            },
+            "continue": {
+              "type": "Text",
+              "config": { "label": "Continue", "placeholder": "" }
+            },
+            "uncover_deeper_insights": {
+              "type": "Text",
+              "config": {
+                "label": "Uncover Deeper Insights",
+                "placeholder": ""
+              }
+            },
+            "explore_beyond": {
+              "type": "Text",
+              "config": { "label": "Explore Beyond", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "animation_captions": {
+        "type": "Group",
+        "config": {
+          "label": "animation captions",
+          "fields": {
+            "collision": {
+              "type": "Text",
+              "config": { "label": "Collision", "placeholder": "" }
+            },
+            "down_time": {
+              "type": "Text",
+              "config": { "label": "Down Time", "placeholder": "" }
+            },
+            "activating": {
+              "type": "Text",
+              "config": { "label": "Activating", "placeholder": "" }
+            },
+            "activated": {
+              "type": "Text",
+              "config": { "label": "Activated", "placeholder": "" }
+            },
+            "obstacle_avoided": {
+              "type": "Text",
+              "config": { "label": "Obstacle Avoided", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": { "choices": {} }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": { "height": 1260, "width": 2400 },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}

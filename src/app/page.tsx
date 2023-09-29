@@ -10,7 +10,15 @@ import { useScrollProgress } from "@/hooks/useScrollProgess";
 import Link from "next/link";
 import React, { use, useEffect, useRef, useState } from "react";
 
-export default function HomePage() {
+import { Metadata } from "next";
+import { createClient } from "@/prismicio";
+
+export default async function HomePage() {
+    const client = createClient();
+    const page = await client.getSingle("home");
+    const { data } = page;
+    console.log("test", data);
+
     return (
         <ScrollingVideoComponent>
             <div
@@ -20,7 +28,7 @@ export default function HomePage() {
                 }}
             >
                 <ScrollTriggeredText
-                    text="Collision"
+                    text={data.animation_captions[0]?.collision || ""}
                     color="#fa8"
                     marginLeft="60vw"
                     marginTop="20vw"
@@ -29,7 +37,7 @@ export default function HomePage() {
                     endScroll={4.2}
                 />
                 <ScrollTriggeredText
-                    text="down time"
+                    text={data.animation_captions[0]?.down_time || ""}
                     color="#fd8"
                     marginLeft="16vw"
                     marginTop="18vw"
@@ -38,7 +46,7 @@ export default function HomePage() {
                     endScroll={7.0}
                 />
                 <ScrollTriggeredText
-                    text="activating..."
+                    text={data.animation_captions[0]?.activating || ""}
                     color="#6ff"
                     className="activating"
                     marginLeft="48vw"
@@ -47,7 +55,7 @@ export default function HomePage() {
                     endScroll={10.1}
                 />
                 <ScrollTriggeredText
-                    text="Activated"
+                    text={data.animation_captions[0]?.activated || ""}
                     color="#C1FFFF"
                     className="activating"
                     marginLeft="48vw"
@@ -56,7 +64,7 @@ export default function HomePage() {
                     endScroll={11.2}
                 />
                 <ScrollTriggeredText
-                    text="Obstacle avoided"
+                    text={data.animation_captions[0]?.obstacle_avoided || ""}
                     color="#C1FFFF"
                     className="obstacle-avoided"
                     marginLeft="58vw"
@@ -64,6 +72,7 @@ export default function HomePage() {
                     startScroll={13.6}
                     endScroll={15.3}
                 />
+
                 <div
                     className="page-padding"
                     style={{
@@ -96,7 +105,10 @@ export default function HomePage() {
                 </div>
 
                 <ScrollToButton
-                    nextSection="Explore Beyond"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.explore_beyond || ""
+                    }
                     duration={1800}
                     className="Uncover-Deeper-Insights"
                 />
@@ -104,15 +116,16 @@ export default function HomePage() {
                     right={false}
                     marginTop={"1520vw"}
                     className="metrics"
-                    title={"See Beyond the Surface with 3Laws Robot Metrics"}
-                    text={
-                        "With the 3Laws Safety Supervisor, gain real-time insights into your robot's performance. Our system provides live metrics that help users understand robot behaviors, make informed decisions, and proactively address potential issues."
-                    }
-                    linkText="Learn More About the Metrics →"
-                    href="https://webflow.com/made-in-webflow/website/relume-timeline-cloneable"
+                    title={data.metrics_card[0]?.title || ""}
+                    text={data.metrics_card[0]?.text || ""}
+                    linkText={data.metrics_card[0]?.link_text || ""}
+                    href={data.metrics_card[0]?.link_href || ""}
                 />
                 <ScrollToButton
-                    nextSection="Uncover Deeper Insights"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.uncover_deeper_insights || ""
+                    }
                     duration={6000}
                     className="Continue"
                 />
@@ -120,28 +133,31 @@ export default function HomePage() {
                     right={true}
                     marginTop={"1130vw"}
                     className="diagnostic-tools"
-                    title={
-                        "Unlock Real-time Insights with 3Laws Diagnostic Tools"
-                    }
-                    text={
-                        "The 3Laws Safety Supervisor offers real-time diagnostics and quick root cause analytics for faster development. In operations, it gives clear field visibility and detects issues early, reducing resolution times."
-                    }
-                    linkText="Learn More About the Product →"
-                    href="https://webflow.com/made-in-webflow/website/relume-timeline-cloneable"
+                    title={data.dynamic_environment_card[0]?.title || ""}
+                    text={data.dynamic_environment_card[0]?.text || ""}
+                    linkText={data.dynamic_environment_card[0]?.link_text || ""}
+                    href={data.dynamic_environment_card[0]?.link_href || ""}
                 />
                 <ScrollToButton
-                    nextSection="Continue"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]?.continue || ""
+                    }
                     duration={2000}
                     className="Reenter-Dynamic-Environment"
                 />
-
                 <ScrollToButton
-                    nextSection="Reenter Dynamic Environment"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.reenter_dynamic_environment || ""
+                    }
                     duration={3300}
                     className="Activate-Safety-Supervisor"
                 />
                 <ScrollToButton
-                    nextSection="Activate Safety Supervisor"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.activate_safety_supervisor || ""
+                    }
                     duration={2700}
                     className="Face-the-Repercussions"
                 />
@@ -149,15 +165,26 @@ export default function HomePage() {
                     right={false}
                     marginTop={"590vw"}
                     className="safety-supervisor"
-                    title={"Introducing the 3Laws safety supervisor"}
-                    text={
-                        "Inspired by Asimov's Three Laws, the 3Laws Safety Supervisor represents the future of robotic safety. It helps robots handle unforeseen challenges efficiently and safely. With our solution, robots achieve faster safety certification, cutting down traditional costs. Trust in a system that upholds the prime directive: safety first."
+                    title={
+                        data.introducing_safety_supervisor_card[0]?.title || ""
                     }
-                    linkText="Meet the Team Behind 3Laws →"
-                    href="/about"
+                    text={
+                        data.introducing_safety_supervisor_card[0]?.text || ""
+                    }
+                    linkText={
+                        data.introducing_safety_supervisor_card[0]?.link_text ||
+                        ""
+                    }
+                    href={
+                        data.introducing_safety_supervisor_card[0]?.link_href ||
+                        ""
+                    }
                 />
                 <ScrollToButton
-                    nextSection="Face the Repercussions"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.face_the_repercussions || ""
+                    }
                     duration={2500}
                     className="Witness-the-Impact"
                 />
@@ -165,20 +192,24 @@ export default function HomePage() {
                     right={true}
                     marginTop={"355vw"}
                     className="collisions"
-                    title={"Collisions result in costly consequences"}
-                    text={
-                        "In high-tech settings, disruptions bring with them substantial financial and safety repercussions. Accidents may cause downtime and expensive repairs, as well as risk of injury. This underscores the need for robotic systems to be reliable and safe."
-                    }
-                    linkText="See the Market Data →"
-                    href="https://webflow.com/made-in-webflow/website/relume-timeline-cloneable"
+                    title={data.collision_card[0]?.title || ""}
+                    text={data.collision_card[0]?.text || ""}
+                    linkText={data.collision_card[0]?.link_text || ""}
+                    href={data.collision_card[0]?.link_href || ""}
                 />
                 <ScrollToButton
-                    nextSection="Witness the Impact"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.witness_the_impact || ""
+                    }
                     duration={1600}
                     className="Enter-Dynamic-Environment"
                 />
                 <ScrollToButton
-                    nextSection="Enter Dynamic Environment"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.enter_dynamic_environment || ""
+                    }
                     duration={2000}
                     className="Scroll-or-Click-to-Explore"
                 />
@@ -186,15 +217,20 @@ export default function HomePage() {
                     right={false}
                     marginTop={"110vw"}
                     className="dynamic-environment"
-                    title={"Operating in a dynamic environment without 3Laws"}
-                    text={
-                        "In today's rapidly evolving world, robots face numerous hazards, from unpredictable humans to swift moving machinery. These autonomous agents are constantly at risk of collisions, injuries, or other unforeseen complications."
+                    title={data.more_info_about_supervisor_card[0]?.title || ""}
+                    text={data.more_info_about_supervisor_card[0]?.text || ""}
+                    linkText={
+                        data.more_info_about_supervisor_card[0]?.link_text || ""
                     }
-                    linkText="See the Market Data →"
-                    href="https://webflow.com/made-in-webflow/website/relume-timeline-cloneable"
+                    href={
+                        data.more_info_about_supervisor_card[0]?.link_href || ""
+                    }
                 />
                 <ScrollToButton
-                    nextSection="Scroll or Click to Explore"
+                    nextSection={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.scroll_or_click_to_explore || ""
+                    }
                     className="start"
                     duration={1500}
                 />
@@ -312,3 +348,13 @@ export default function HomePage() {
         </ScrollingVideoComponent>
     );
 }
+
+// export async function generateMetadata(): Promise<Metadata> {
+//     const client = createClient();
+//     const page = await client.getSingle("home");
+
+//     return {
+//         title: page.data.meta_title,
+//         description: page.data.meta_description,
+//     };
+// }

@@ -221,6 +221,532 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Home → Dynamic Environment Card*
+ */
+export interface HomeDocumentDataDynamicEnvironmentCardItem {
+  /**
+   * Title field in *Home → Dynamic Environment Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.dynamic_environment_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *Home → Dynamic Environment Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.dynamic_environment_card[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link Text field in *Home → Dynamic Environment Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.dynamic_environment_card[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * Link href field in *Home → Dynamic Environment Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.dynamic_environment_card[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_href: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → Collision Card*
+ */
+export interface HomeDocumentDataCollisionCardItem {
+  /**
+   * Title field in *Home → Collision Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.collision_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *Home → Collision Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.collision_card[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link Text field in *Home → Collision Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.collision_card[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * Link href field in *Home → Collision Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.collision_card[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_href: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → Introducing Safety supervisor Card*
+ */
+export interface HomeDocumentDataIntroducingSafetySupervisorCardItem {
+  /**
+   * title field in *Home → Introducing Safety supervisor Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.introducing_safety_supervisor_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * text field in *Home → Introducing Safety supervisor Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.introducing_safety_supervisor_card[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * link text field in *Home → Introducing Safety supervisor Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.introducing_safety_supervisor_card[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * Link href field in *Home → Introducing Safety supervisor Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.introducing_safety_supervisor_card[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_href: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → More Info about supervisor card*
+ */
+export interface HomeDocumentDataMoreInfoAboutSupervisorCardItem {
+  /**
+   * Title field in *Home → More Info about supervisor card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.more_info_about_supervisor_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * text field in *Home → More Info about supervisor card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.more_info_about_supervisor_card[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * link text field in *Home → More Info about supervisor card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.more_info_about_supervisor_card[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * link href field in *Home → More Info about supervisor card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.more_info_about_supervisor_card[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_href: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → Metrics card*
+ */
+export interface HomeDocumentDataMetricsCardItem {
+  /**
+   * title field in *Home → Metrics card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.metrics_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * text field in *Home → Metrics card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.metrics_card[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * link text field in *Home → Metrics card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.metrics_card[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * link href field in *Home → Metrics card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.metrics_card[].link_href
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_href: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → Scroll to next section buttons*
+ */
+export interface HomeDocumentDataScrollToNextSectionButtonsItem {
+  /**
+   * Scroll Or Click To Explore field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].scroll_or_click_to_explore
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  scroll_or_click_to_explore: prismic.KeyTextField;
+
+  /**
+   * Enter Dynamic Environment field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].enter_dynamic_environment
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  enter_dynamic_environment: prismic.KeyTextField;
+
+  /**
+   * Witness The Impact field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].witness_the_impact
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  witness_the_impact: prismic.KeyTextField;
+
+  /**
+   * Face The Repercussions field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].face_the_repercussions
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  face_the_repercussions: prismic.KeyTextField;
+
+  /**
+   * Activate Safety Supervisor field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].activate_safety_supervisor
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  activate_safety_supervisor: prismic.KeyTextField;
+
+  /**
+   * Reenter Dynamic Environment field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].reenter_dynamic_environment
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  reenter_dynamic_environment: prismic.KeyTextField;
+
+  /**
+   * Continue field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].continue
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  continue: prismic.KeyTextField;
+
+  /**
+   * Uncover Deeper Insights field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].uncover_deeper_insights
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uncover_deeper_insights: prismic.KeyTextField;
+
+  /**
+   * Explore Beyond field in *Home → Scroll to next section buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[].explore_beyond
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  explore_beyond: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Home → animation captions*
+ */
+export interface HomeDocumentDataAnimationCaptionsItem {
+  /**
+   * Collision field in *Home → animation captions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[].collision
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  collision: prismic.KeyTextField;
+
+  /**
+   * Down Time field in *Home → animation captions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[].down_time
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  down_time: prismic.KeyTextField;
+
+  /**
+   * Activating field in *Home → animation captions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[].activating
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  activating: prismic.KeyTextField;
+
+  /**
+   * Activated field in *Home → animation captions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[].activated
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  activated: prismic.KeyTextField;
+
+  /**
+   * Obstacle Avoided field in *Home → animation captions*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[].obstacle_avoided
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  obstacle_avoided: prismic.KeyTextField;
+}
+
+type HomeDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Dynamic Environment Card field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.dynamic_environment_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  dynamic_environment_card: prismic.GroupField<
+    Simplify<HomeDocumentDataDynamicEnvironmentCardItem>
+  >;
+
+  /**
+   * Collision Card field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.collision_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  collision_card: prismic.GroupField<
+    Simplify<HomeDocumentDataCollisionCardItem>
+  >;
+
+  /**
+   * Introducing Safety supervisor Card field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.introducing_safety_supervisor_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  introducing_safety_supervisor_card: prismic.GroupField<
+    Simplify<HomeDocumentDataIntroducingSafetySupervisorCardItem>
+  >;
+
+  /**
+   * More Info about supervisor card field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.more_info_about_supervisor_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  more_info_about_supervisor_card: prismic.GroupField<
+    Simplify<HomeDocumentDataMoreInfoAboutSupervisorCardItem>
+  >;
+
+  /**
+   * Metrics card field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.metrics_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  metrics_card: prismic.GroupField<Simplify<HomeDocumentDataMetricsCardItem>>;
+
+  /**
+   * Scroll to next section buttons field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.scroll_to_next_section_buttons[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  scroll_to_next_section_buttons: prismic.GroupField<
+    Simplify<HomeDocumentDataScrollToNextSectionButtonsItem>
+  >;
+
+  /**
+   * animation captions field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.animation_captions[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  animation_captions: prismic.GroupField<
+    Simplify<HomeDocumentDataAnimationCaptionsItem>
+  >;
+
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
 type PrivacyDocumentDataSlicesSlice =
   | PrivacyParagraghSlice
   | PrivacySubtitleSlice
@@ -395,6 +921,7 @@ export type SecurityDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AboutDocument
   | BlogPostDocument
+  | HomeDocument
   | PrivacyDocument
   | SecurityDocument;
 
@@ -1289,6 +1816,9 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       PrivacyDocument,
       PrivacyDocumentData,
       PrivacyDocumentDataSlicesSlice,

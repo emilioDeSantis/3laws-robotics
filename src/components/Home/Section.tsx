@@ -72,7 +72,7 @@ const Section: React.FC<SectionProps> = ({
                         letterSpacing: "0.08em",
                     }}
                 >
-                    {linkText}
+                    {linkText} →
                 </Link>
             </div>
         </div>
