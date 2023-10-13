@@ -13,6 +13,31 @@ import React, { use, useEffect, useRef, useState } from "react";
 import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 
+ 
+// export const metadata: Metadata = {
+//   openGraph: {
+//     title: '3Lawsrobotics.com',
+//     description: 'The React Framework for the Web',
+//     url: 'https://3laws-robotics.vercel.app/',
+//     siteName: '3Lawsrobotics.com',
+//     images: [
+//       {
+//         url: 'https://3laws-robotics.vercel.app/og.png',
+//         width: 800,
+//         height: 600,
+//       },
+//       {
+//         url: 'https://3laws-robotics.vercel.app/og-alt.png',
+//         width: 1800,
+//         height: 1600,
+//         alt: 'My custom alt',
+//       },
+//     ],
+//     locale: 'en_US',
+//     type: 'website',
+//   },
+// };
+
 export default async function HomePage() {
     const client = createClient();
     const page = await client.getSingle("home");

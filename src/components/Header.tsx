@@ -109,7 +109,6 @@ const Header: React.FC = () => {
                         height: "100%",
                         backgroundColor: "#5E5CE6",
                         marginInlineStart: `${underlineLeft}px`,
-//mak eteh ease reall fast then very slow once its close to the end
                         transition: "margin-inline-start 0.5s ease",
                     }}
                 ></div>
