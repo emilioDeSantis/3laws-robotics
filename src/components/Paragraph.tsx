@@ -1,27 +1,27 @@
 import React from "react";
 
-interface DescriptionProps {
+interface ParagraphProps {
     children: React.ReactNode;
 }
 
-const Description: React.FC<DescriptionProps> = ({ children }) => {
+const Paragraph: React.FC<ParagraphProps> = ({ children }) => {
     return (
         <div
             className="page-padding"
             style={{
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "flex-start",
                 width: "100%",
             }}
         >
             <span
                 style={{
-                    fontSize: "1.6rem",
-                    fontWeight: 500,
+                    fontSize: "1.3rem",
+                    fontWeight: 400,
                     color: "#FFFFFF99",
                     lineHeight: "170%",
-                    width: "44rem",
-                    marginTop: "5rem",
+                    width: "38rem",
+                    marginTop: '3.2rem',
                 }}
             >
                 {children}
@@ -30,4 +30,4 @@ const Description: React.FC<DescriptionProps> = ({ children }) => {
     );
 };
 
-export default Description;
+export default Paragraph;

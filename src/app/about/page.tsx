@@ -6,6 +6,7 @@ import { components } from "@/slices";
 import PageContentContainer from "@/components/PageContentContainer";
 import Title from "@/components/Title";
 import Founder from "@/components/About/Founder";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const founders = [
     {
@@ -39,7 +40,7 @@ export default async function About() {
     const page = await client.getSingle("about");
 
     return (
-        <div
+        <main
             style={{
                 display: "flex",
                 flexDirection: "column",
@@ -48,8 +49,27 @@ export default async function About() {
             }}
         >
             <Title>Technology Development </Title>
+
+            <nav>
+            <a
+                href="#team-section"
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    opacity: 1,
+                    transition: "opacity 0.3s",
+                    marginTop: "3rem",
+                }}
+            >
+                <span style={{ marginBottom: "5px" }}>Meet the Team</span>
+                <ChevronDownIcon style={{ height: "20px", width: "20px" }} />
+            </a>
+            </nav>
             <PageContentContainer>
-                <div
+                <section
                     className="underlineLinks timeline-container"
                     style={{
                         display: "flex",
@@ -73,10 +93,10 @@ export default async function About() {
                             components={components}
                         />
                     </div>
-                </div>
+                </section>
             </PageContentContainer>
-            <Title>Meet the Visionaries</Title>
-            <div
+            <Title id="team-section">Meet the Visionaries</Title>
+            <section
                 className="page-padding"
                 style={{
                     display: "flex",
@@ -98,8 +118,8 @@ export default async function About() {
                         image={founder.image}
                     />
                 ))}
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 

@@ -1,10 +1,63 @@
+import BoldParagraph from "@/components/BoldParagraph";
 import Button from "@/components/Button";
 import Description from "@/components/Description";
+import Divider from "@/components/Divider";
+import GradientArrow from "@/components/GradientArrow";
+import Paragraph from "@/components/Paragraph";
+import Subtitle from "@/components/Subtitle";
+import SuiteTitle from "@/components/SuiteTitle";
 import Title from "@/components/Title";
+import {
+    ClockIcon,
+    GlobeAltIcon,
+    ShieldCheckIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Product() {
+    const features = [
+        {
+            title: "Size",
+            description:
+                "Whether you're a large manufacturer or a budding tech startup, the Supervisor Suite is tailored to fit.",
+        },
+        {
+            title: "Application",
+            description:
+                "From ventures into autonomous boats to pioneering human-robot collaboration, our solution is versatile enough to support your innovation.",
+        },
+        {
+            title: "Adaptability",
+            description:
+                "Built for scalability, the Supervisor Suite seamlessly adapts to your growing needs.",
+        },
+        {
+            title: "Community",
+            description:
+                "Join a league of forward-thinking companies redefining the horizons of robotic safety with the Supervisor Suite.",
+        },
+    ];
+
+    const cards = [
+        {
+            title: "Universal Compatibility",
+            description: "Tailored for any robotic system",
+            icon: <GlobeAltIcon color="#88C6FF" />,
+        },
+        {
+            title: "Fast Development",
+            description: "Seamless integration and swift setup",
+            icon: <ClockIcon color="#8CFFF1" />,
+        },
+        {
+            title: "Robust Safety",
+            description:
+                "Prepared for the unpredictable, ensuring utmost safety",
+            icon: <ShieldCheckIcon color="#83FFA6" />,
+        },
+    ];
+
     return (
         <main
             style={{
@@ -13,761 +66,525 @@ export default async function Product() {
                 flexDirection: "column",
                 alignItems: "center",
                 position: "relative",
+                paddingTop: "10rem",
             }}
         >
             <div
-                style={{
-                    position: "absolute",
-                    zIndex: -1,
-                    top: "3rem",
-                }}
-            >
-                <div
-                    style={{
-                        width: "100vw",
-                        height: "120vh",
-                        position: "relative",
-                        opacity: 0.3,
-                    }}
-                >
-                    <Image
-                        fill
-                        src={"/bg1.png"}
-                        alt={"ets"}
-                        sizes="3000px"
-                        priority
-                        style={{
-                            objectFit: "cover",
-                        }}
-                    />
-                </div>
-            </div>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                }}
-            >
-                <Title>3Laws Safety Supervisor</Title>
-                <Description>
-                    your complete system for an unparalleled robotic experience
-                    (this should explain clearly what the product is)
-                </Description>
-            </div>
-            <div
-                style={{
-                    display: "flex",
-                    paddingTop: "8rem",
-                    gap: "20px",
-                }}
-            >
-                <Card
-                    title="Real-Time Analytics, Diagnostics"
-                    text="Get unique insights into your robot’s operation. View live metrics on resource utilization, performance, and safety adherence. Leverage Supervisor AI to observe otherwise undetectable patterns."
-                >
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        {/* <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                filter: "blur(6px)",
-                            }}
-                        >
-                            <AnaliticsIcon color="#8ff" />
-                        </div> */}
-                        <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                position: "absolute",
-                            }}
-                        >
-                            <AnaliticsIcon color="#ddffff" />
-                        </div>
-                    </div>
-                </Card>
-                <Card
-                    title="Automated Issue Discovery, Root-Cause Analysis"
-                    text="Take advantage of AI-generated system identification to proactively detect system performance or safety deterioration. Automatically correlate events for easier root cause analysis."
-                >
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        {/* <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                filter: "blur(6px)",
-                            }}
-                        >
-                            <MagnifyingGlassIcon color="#8ff" />
-                        </div> */}
-                        <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                position: "absolute",
-                            }}
-                        >
-                            <MagnifyingGlassIcon color="#ddffff" />
-                        </div>
-                    </div>
-                </Card>
-                <Card
-                    title="Certifiable Safe, High-Performance Operations"
-                    text="Define your safety envelope and enable embedded operational safety. Get maximum performance within your safety requirements. Leverage system ID documentation and our safety-certified stack (pending) to accelerate your certification path."
-                >
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        {/* <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                filter: "blur(6px)",
-                            }}
-                        >
-                            <ShieldIcon color="#8ff" />
-                        </div> */}
-                        <div
-                            style={{
-                                height: "5rem",
-                                width: "5rem",
-                                position: "absolute",
-                            }}
-                        >
-                            <ShieldIcon color="#ddffff" />
-                        </div>
-                    </div>
-                </Card>
-            </div>
-            <div
-                style={{
-                    position: "relative",
-                    height: 0,
-                    width: "100vw",
-                    // zIndex: -1,
-                }}
-            >
-                <div
-                    style={{
-                        position: "absolute",
-                        zIndex: -1,
-                        top: "12rem",
-                    }}
-                >
-                    <div
-                        style={{
-                            width: "100vw",
-                            height: "100vh",
-                            position: "relative",
-                            opacity: 0.3,
-                        }}
-                    >
-                        <Image
-                            fill
-                            src={"/bg2.png"}
-                            alt={"ets"}
-                            sizes="3000px"
-                            priority
-                            style={{
-                                objectFit: "cover",
-                            }}
-                        />
-                    </div>
-                </div>
-            </div>
-            <div
-                style={{
-                    width: "100vw",
-                    marginBottom: "6rem",
-                    // marginTop: "6rem",
-                }}
-            >
-                {/* <div
-                style={{
-                    lineHeight: "128%",
-                    fontWeight: 500,
-                    fontSize: "3.4vw",
-                    fontFamily: "korataki",
-                    letterSpacing: "0.12em",
-                    // textTransform: "uppercase",
-                    marginTop: "24rem",
-                    marginBottom: "6rem",
-                }}
-            >
-                Features
-            </div> */}
-                <Title>Features</Title>
-            </div>
-
-            <div
-                style={{
-                    display: "flex",
-                    gap: "2rem",
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "30rem",
-                        background: "#ffffff11",
-                        borderRadius: "10px",
-                        border: "1px solid #fff4",
-                        backdropFilter: "blur(10px)",
-                        WebkitBackdropFilter: "blur(10px)",
-                        paddingInline: "2vw",
-                        paddingBlock: "3rem",
-                    }}
-                >
-                    <div
-                        style={{
-                            fontSize: "1.6rem",
-                            lineHeight: "130%",
-                            fontWeight: 300,
-                            textTransform: "uppercase",
-                            fontFamily: "korataki",
-                            letterSpacing: "0.12em",
-                            marginBottom: "50px",
-                        }}
-                    >
-                        Development
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.12em",
-                            }}
-                        >
-                            Faster time to market
-                        </p>
-                    </div>
-
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.1em",
-                            }}
-                        >
-                            Root Cause Analysis
-                        </p>
-                    </div>
-
-    
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.1em",
-                            }}
-                        >
-                            Real Time Diagnostics
-                        </p>
-                    </div>
-
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            // marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-                </div>
-
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "30rem",
-                        background: "#ffffff11",
-                        borderRadius: "10px",
-                        border: "1px solid #fff4",
-                        backdropFilter: "blur(10px)",
-                        WebkitBackdropFilter: "blur(10px)",
-                        paddingInline: "2vw",
-                        paddingBlock: "3rem",
-                    }}
-                >
-                    <div
-                        style={{
-                            fontSize: "1.6rem",
-                            lineHeight: "130%",
-                            fontWeight: 300,
-                            textTransform: "uppercase",
-                            fontFamily: "korataki",
-                            letterSpacing: "0.12em",
-                            marginBottom: "50px",
-                        }}
-                    >
-                        Operations
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.1em",
-                            }}
-                        >
-                            Faster time to Resolution
-                        </p>
-                    </div>
-
-
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.1em",
-                            }}
-                        >
-                            Proactive issue Discovery
-                        </p>
-                    </div>
-
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                        }}
-                    >
-                        <div
-                            style={{
-                                borderRadius: "1000px",
-                                background: "#5855EB",
-                                height: "8px",
-                                width: "8px",
-                            }}
-                        />
-                        <p
-                            style={{
-                                fontSize: "0.9rem",
-                                lineHeight: "130%",
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                fontFamily: "korataki",
-                                letterSpacing: "0.1em",
-                            }}
-                        >
-                            Real Time Field Visibility
-                        </p>
-                    </div>
-
- 
-                    <div
-                        style={{
-                            fontWeight: 300,
-                            fontSize: "0.96rem",
-                            color: "#dddddd",
-                            // marginBottom: "50px",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        Get unique insights into your robot’s operation. View
-                        live metrics on resource utilization.
-                    </div>
-                </div>
-            </div>
-            {/* <Title>Why Should you use 3Laws</Title> */}
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "46rem",
-                    paddingTop: "2rem",
-                    fontWeight: 300,
-                    fontSize: "2.2rem",
-                    color: "#ffffff",
-                    lineHeight: "150%",
-                    gap: "4rem",
-                }}
-            >
-                <div
-                    style={{
-                        paddingTop: "16rem",
-                        fontWeight: 300,
-                        fontSize: "0.8rem",
-                        color: "#dddddd",
-                        fontFamily: "korataki",
-                        letterSpacing: "0.12em",
-                        // textTransform: 'uppercase',
-                    }}
-                >
-                    Why Should you use 3Laws
-                </div>
-                <div
-                    style={
-                        {
-                            // marginTop: "1rem",
-                        }
-                    }
-                >
-                    Deploying robotic systems in the real world is hard. 3Laws
-                    makes it easier.
-                </div>
-
-                <div style={{}}>
-                    We provide a Supervisor for autonomous and human-operated
-                    robotic systems, monitoring and ensuring safety in a way
-                    that allows for maximum performance.
-                </div>
-                <div style={{}}>
-                    Our real-time safety analytics and robust collision
-                    avoidance software installs quickly and enables faster,
-                    safer, and cheaper innovation and lowers time-to-resolution
-                    of issues.
-                </div>
-
-                <Button
-                    href="/case-studies"
-                    text="Explore real-life case studies →"
-                />
-                <div
-                    style={{
-                        fontWeight: 300,
-                        fontSize: "2.2rem",
-                        color: "#ffffff",
-                        lineHeight: "150%",
-                    }}
-                >
-                    Our technology is provably robust to uncertainty in modeling
-                    and perception.
-                </div>
-                <div
-                    style={{
-                        fontWeight: 300,
-                        fontSize: "2.2rem",
-                        color: "#ffffff",
-                        lineHeight: "150%",
-                    }}
-                >
-                    Read more below.
-                </div>
-
-                <div
-                    style={{
-                        paddingTop: "16rem",
-                        fontWeight: 300,
-                        fontSize: "0.8rem",
-                        color: "#dddddd",
-                        fontFamily: "korataki",
-                        letterSpacing: "0.12em",
-                        // textTransform: 'uppercase',
-                    }}
-                >
-                    Technology
-                </div>
-                <div
-                    style={
-                        {
-                            // marginTop: "1rem",
-                        }
-                    }
-                >
-                    Born from innovative research at Caltech, the 3Laws Safety
-                    Supervisor is a testament to pioneering thought and
-                    meticulous engineering. Discover the journey from idea to
-                    realization and the science that powers our transformative
-                    robotic solutions.
-                </div>
-
-                <Button
-                    href="/case-studies"
-                    text="Explore the origins of the 3Laws tech →"
-                />
-            </div>
-            <div
-                style={{
-                    height: "200px",
-                }}
-            />
-        </main>
-    );
-}
-
-interface CardProps {
-    children: React.ReactNode;
-    title: String;
-    text: String;
-}
-
-const Card: React.FC<CardProps> = ({ children, title, text }) => {
-    return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "30px",
-                width: "23rem",
-                paddingInline: "2vw",
-                paddingBlock: "2vw",
-                // height: "100vw",
-                background: "#ffffff11",
-                borderRadius: "10px",
-                border: "1px solid #fff4",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-            }}
-        >
-            <div
+                className="page-padding"
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    // justifyContent: "center",
+                    justifyContent: "flex-start",
                     width: "100%",
                 }}
             >
                 <div
                     style={{
-                        height: "8rem",
-                        width: "8rem",
-                        marginBottom: "0px",
-                        marginTop: "40px",
+                        width: "0.5em", // or adjust based on your desired circle size
+                        height: "0.5em",
+                        borderRadius: "50%",
+                        border: "2px solid #FFFFFF99", // adjust the color and width of the stroke as needed
+                        marginRight: "0.4em",
+                    }}
+                ></div>
+                <span
+                    style={{
+                        fontSize: "1.2rem",
+                        fontWeight: 500,
+                        lineHeight: "105%",
+                        color: "#FFFFFF99",
                     }}
                 >
-                    {children}
+                    3Laws Supervisor Suite
+                </span>
+            </div>
+            <h2
+                className="page-padding"
+                style={{
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    width: "100%",
+                }}
+            >
+                <span
+                    className="product-title"
+                    style={{
+                        fontWeight: 800,
+                        lineHeight: "105%",
+                        width: "56rem",
+                        marginTop: "3rem",
+                    }}
+                >
+                    Revolutionizing Robotic Safety for an Unpredictable World.
+                </span>
+            </h2>
+            <div
+                className="page-padding"
+                style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    width: "100%",
+                }}
+            >
+                <span
+                    style={{
+                        fontSize: "1.6rem",
+                        fontWeight: 500,
+                        color: "#FFFFFF99",
+                        lineHeight: "170%",
+                        width: "44rem",
+                        marginTop: "5rem",
+                    }}
+                >
+                    {`As robots move from the confines of factories into our everyday world, a universal safety solution becomes essential. The Supervisor Suite offers a consistent safety protocol for any challenge in any setting.`}
+                </span>
+            </div>
+            <Divider />
+            <Subtitle>What is the Supervisor Suite?</Subtitle>
+            <Paragraph>
+                {`The Supervisor Suite is an advanced software solution positioned
+                between a robot's controls and hardware. It ensures operator
+                signals are safe, and if not, adjusts them to maintain safety
+                while closely adhering to the intended task.`}
+            </Paragraph>
+            <div
+                className="page-padding"
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "30vw",
+                    gap: "2vw",
+                    fontFamily: "korataki",
+                    letterSpacing: "0.05em",
+                    lineHeight: "130%",
+                    marginTop: "2rem",
+                }}
+            >
+                <div
+                    style={{
+                        flex: "4",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative",
+                        height: "100%",
+                    }}
+                >
+                    <Image
+                        src="/cpu.png"
+                        fill
+                        alt="cpu chip"
+                        style={{
+                            objectFit: "contain",
+                            mixBlendMode: "lighten",
+                        }}
+                    />
+                    <span
+                        style={{
+                            position: "absolute",
+                            bottom: "2vw",
+                            color: "#BFE0FF",
+                            fontSize: "clamp(0.5rem, 1.2vw, 1rem)",
+                        }}
+                    >
+                        Controls
+                    </span>
+                </div>
+
+                <div
+                    style={{
+                        height: "100%",
+                        flex: "3.6",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        position: "relative",
+                    }}
+                >
+                    <GradientArrow color="#D6BEAD" />
+                    <span
+                        style={{
+                            color: "#DAC4B4",
+                            fontWeight: 600,
+                            position: "absolute",
+                            bottom: "6vw",
+                            whiteSpace: "nowrap",
+                            fontSize: "clamp(0.5rem, 1.6vw, 1.3rem)",
+                        }}
+                    >
+                        Planning signals
+                    </span>
+                </div>
+
+                <div
+                    style={{
+                        flex: "5",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative",
+                        height: "100%",
+                    }}
+                >
+                    <Image
+                        src="/3laws shield.png"
+                        fill
+                        alt="shield"
+                        style={{
+                            objectFit: "contain",
+                            mixBlendMode: "lighten",
+                        }}
+                    />
+                    <span
+                        style={{
+                            color: "#CDF7FF",
+                            fontWeight: 700,
+                            position: "absolute",
+                            fontSize: "clamp(0.55rem, 1.7vw, 1.4rem)",
+                            lineHeight: "130%",
+                            textAlign: "center",
+                        }}
+                    >
+                        Supervisor Software
+                    </span>
+                </div>
+
+                <div
+                    style={{
+                        height: "100%",
+                        flex: "3.6",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        position: "relative",
+                    }}
+                >
+                    <GradientArrow color="#7AE6FF" />
+                    <span
+                        style={{
+                            color: "#8BEAFF",
+                            marginTop: "1vw",
+                            position: "absolute",
+                            bottom: "6vw",
+                            whiteSpace: "nowrap",
+                            fontWeight: 600,
+                            fontSize: "clamp(0.5rem, 1.6vw, 1.3rem)",
+                        }}
+                    >
+                        ✓ Safe signals
+                    </span>
+                </div>
+
+                <div
+                    style={{
+                        flex: "4",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative",
+                        height: "100%",
+                    }}
+                >
+                    <Image
+                        src="/gear.png"
+                        fill
+                        alt="gear"
+                        style={{
+                            objectFit: "contain",
+                            mixBlendMode: "lighten",
+                        }}
+                    />
+                    <span
+                        style={{
+                            color: "#E5BEFF",
+                            position: "absolute",
+                            bottom: "2vw",
+                            fontSize: "clamp(0.5rem, 1.2vw, 1rem)",
+                        }}
+                    >
+                        Hardware
+                    </span>
                 </div>
             </div>
+            <Divider />
+            <Subtitle>What is the Suite Comprised of?</Subtitle>
             <div
+                className="page-padding"
                 style={{
-                    fontSize: "1.2rem",
-                    lineHeight: "128%",
-                    fontWeight: 600,
-                    fontFamily: "korataki",
-                    letterSpacing: "0.1em",
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    width: "100%",
                 }}
             >
-                {title}
+                <span
+                    style={{
+                        fontSize: "1.6rem",
+                        fontWeight: 500,
+                        color: "#FFFFFF99",
+                        lineHeight: "170%",
+                        width: "38rem",
+                        marginTop: "3.2rem",
+                    }}
+                >
+                    The Supervisor Suite is made up of a trio of specialized
+                    tools, each designed to optimize and safeguard your robotic
+                    operations: the{" "}
+                    <b
+                        style={{
+                            color: "#ffffff",
+                        }}
+                    >
+                        Monitor
+                    </b>
+                    , the{" "}
+                    <b
+                        style={{
+                            color: "#ffffff",
+                        }}
+                    >
+                        Modeler
+                    </b>
+                    , and the{" "}
+                    <b
+                        style={{
+                            color: "#ffffff",
+                        }}
+                    >
+                        Copilot
+                    </b>
+                    .
+                </span>
             </div>
+            <Divider />
+            <SuiteTitle>Monitor</SuiteTitle>
+            <BoldParagraph>
+                Provides deep insights into performance, reliability, and
+                safety.
+            </BoldParagraph>
             <div
                 style={{
-                    fontWeight: 300,
-                    fontSize: "0.96rem",
-                    color: "#dddddd",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    width: "clamp(64vw,768px,96vw)",
+                    height: "clamp(40vw,480px, 60vw)",
+                    marginBlock: "5rem",
                 }}
             >
-                {text}
+                <Image
+                    src="/monitor dashboard 1.png"
+                    fill
+                    alt="monitor dashboard"
+                    style={{
+                        objectFit: "cover",
+                        mixBlendMode: "lighten",
+                        borderRadius: "2vw",
+                        boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
+                    }}
+                />
             </div>
-        </div>
+            <BoldParagraph>
+                {`Understand what’s happening on your system, and decrease
+                time-to-resolution of subsystem failures.`}
+            </BoldParagraph>
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    width: "clamp(64vw,768px,96vw)",
+                    height: "clamp(40vw,480px, 60vw)",
+                    marginBlock: "5rem",
+                }}
+            >
+                <Image
+                    src="/monitor dashboard 2.png"
+                    fill
+                    alt="monitor dashboard robot overview"
+                    style={{
+                        objectFit: "cover",
+                        mixBlendMode: "lighten",
+                        borderRadius: "2vw",
+                        boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
+                    }}
+                />
+            </div>
+            <Divider />
+            <SuiteTitle>Modeler</SuiteTitle>
+            <BoldParagraph>
+                Generates data-driven dynamics and environmental models of your
+                systems.
+            </BoldParagraph>{" "}
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: "clamp(4rem,16vw,5rem)",
+                    marginBottom: "clamp(0rem,5vw,3rem)",
+                    gap: '5vw',
+                    flexWrap: 'wrap',
+                }}
+            >
+                <div
+                    style={{
+                        position: "relative",
+                        width: "clamp(40vw,360px,96vw)",
+                        height: "clamp(20vw,180px, 48vw)",
+                    }}
+                >
+                    <Image
+                        src="/modeler diagram 1.png"
+                        fill
+                        alt="modeler diagram"
+                        style={{
+                            objectFit: "cover",
+                            mixBlendMode: "lighten",
+                            borderRadius: "2vw",
+                            boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
+                        }}
+                    />
+                </div>
+                <div
+                    style={{
+                        position: "relative",
+                        width: "clamp(40vw,360px,96vw)",
+                        height: "clamp(20vw,180px, 48vw)",
+                    }}
+                >
+                    <Image
+                        src="/modeler diagram 2.png"
+                        fill
+                        alt="modeler diagram"
+                        style={{
+                            objectFit: "cover",
+                            mixBlendMode: "lighten",
+                            borderRadius: "2vw",
+                            boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
+                        }}
+                    />
+                </div>
+            </div>
+            <Divider />
+            <SuiteTitle>Copilot</SuiteTitle>
+            <BoldParagraph>
+                Ensures constraints are always satisfied, resulting in smooth
+                operations.
+            </BoldParagraph>
+            <Divider />
+            <Subtitle>Who Uses the Supervisor Suite?</Subtitle>
+            <div
+                className="page-padding"
+                style={{
+                    width: "100%",
+                    marginTop: "1rem",
+                }}
+            >
+                {features.map((feature, index) => (
+                    <div key={index}>
+                        <h2
+                            style={{
+                                fontWeight: 600,
+                                fontSize: "1.5rem",
+                                marginTop: "2rem",
+                            }}
+                        >
+                            {feature.title}
+                        </h2>
+                        <p
+                            style={{
+                                fontSize: "1.2rem",
+                                fontWeight: 400,
+                                color: "#FFFFFF99",
+                                lineHeight: "170%",
+                                maxWidth: "48rem",
+                                marginTop: "0.6rem",
+                            }}
+                        >
+                            {feature.description}
+                        </p>
+                    </div>
+                ))}
+            </div>
+            <Divider />
+            <div
+                style={{
+                    background: "#0A0A0A",
+                    width: "100%",
+                }}
+            >
+                <Subtitle>Why Chose the Supervisor Suite?</Subtitle>
+                <div
+                    className="page-padding"
+                    style={{
+                        display: "flex",
+                        gap: "1.4rem",
+                        marginTop: "clamp(4rem,10vw,8rem)",
+                        marginBottom: "clamp(4rem,7vw,4rem)",
+                        flexWrap: "wrap",
+                    }}
+                >
+                    {cards.map((card, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                flex: 1,
+                                borderRadius: "1.2rem",
+                                padding: "2rem",
+                                boxSizing: "border-box",
+                                textAlign: "center",
+                                background: "#151516",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                minWidth: "22rem",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: "100%",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: "4rem",
+                                    }}
+                                >
+                                    {card.icon}
+                                </div>
+                            </div>
+                            <h2
+                                style={{
+                                    fontWeight: 700,
+                                    fontSize: "1.6rem",
+                                    marginTop: "1rem",
+                                    whiteSpace: "nowrap",
+                                }}
+                            >
+                                {card.title}
+                            </h2>
+                            <p
+                                style={{
+                                    fontWeight: 500,
+                                    opacity: 0.6,
+                                    lineHeight: "170%",
+                                    width: "15rem",
+                                    marginTop: "0.4rem",
+                                }}
+                            >
+                                {card.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </main>
     );
-};
-
-interface SvgProps {
-    color?: string;
 }
-
-const AnaliticsIcon: React.FC<SvgProps> = ({ color = "black" }) => (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path
-            fill={color}
-            d="M4.75,20.75A.25.25,0,0,0,5,20.5v-2a1,1,0,0,0-1-1H2a1,1,0,0,0-1,1v2a.25.25,0,0,0,.25.25Z"
-        />
-        <path
-            fill={color}
-            d="M10.75,20.75A.25.25,0,0,0,11,20.5v-7a1,1,0,0,0-1-1H8a1,1,0,0,0-1,1v7a.25.25,0,0,0,.25.25Z"
-        />
-        <path
-            fill={color}
-            d="M16.75,20.75A.25.25,0,0,0,17,20.5v-5a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1v5a.25.25,0,0,0,.25.25Z"
-        />
-        <path
-            fill={color}
-            d="M22.75,20.75A.25.25,0,0,0,23,20.5V8.5a1,1,0,0,0-1-1H20a1,1,0,0,0-1,1v12a.25.25,0,0,0,.25.25Z"
-        />
-        <path
-            fill={color}
-            d="M3.5,13.5a2,2,0,0,0,2-2,1.981,1.981,0,0,0-.1-.6l3.167-2.64A1.955,1.955,0,0,0,11.011,7.8l2.5.834A2,2,0,0,0,17.5,8.5a1.964,1.964,0,0,0-.231-.912l3.287-3.835A1.994,1.994,0,1,0,19.5,2a1.962,1.962,0,0,0,.093.571L16.13,6.612a1.932,1.932,0,0,0-2.141.593l-2.5-.833A1.995,1.995,0,1,0,7.6,7.1L4.436,9.744A1.975,1.975,0,0,0,3.5,9.5a2,2,0,0,0,0,4Z"
-        />
-        <path
-            fill={color}
-            d="M23,22H1a1.016,1.016,0,0,0-1,1,1,1,0,0,0,1,1H23a1,1,0,0,0,1-1A1.015,1.015,0,0,0,23,22Z"
-        />
-    </svg>
-);
-
-const MagnifyingGlassIcon: React.FC<SvgProps> = ({ color = "black" }) => (
-    <svg viewBox="0 0 516 516" xmlns="http://www.w3.org/2000/svg">
-        <path
-            fill={color}
-            d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z"
-        />
-    </svg>
-);
-
-const ShieldIcon: React.FC<SvgProps> = ({ color = "black" }) => (
-    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <path
-            fill={color}
-            d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z"
-        />
-    </svg>
-);

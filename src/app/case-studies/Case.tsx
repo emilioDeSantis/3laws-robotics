@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { roboto_mono } from "../fonts";
 import Button2 from "@/components/Button2";
 
-// Define the props type
 interface CaseProps {
     image: string;
     alt: string;
@@ -14,7 +13,6 @@ interface CaseProps {
     video: string;
 }
 
-// Use the defined props type with React.FC
 const Case: React.FC<CaseProps> = ({
     image,
     alt,
@@ -33,7 +31,7 @@ const Case: React.FC<CaseProps> = ({
         setIsModalOpen(false);
     };
     return (
-        <div
+        <article
             style={{
                 width: "100%",
                 display: "flex",
@@ -94,19 +92,17 @@ const Case: React.FC<CaseProps> = ({
                     {company}
                 </p>
             </div>
-            <h2
-                // className={roboto_mono.className}
+            <h3
                 style={{
                     fontSize: "1rem",
                     lineHeight: "120%",
                     fontWeight: 500,
-                    // textTransform: "uppercase",
                     letterSpacing: "0.1em",
                 }}
             >
                 {description}
-            </h2>
-        </div>
+            </h3>
+        </article>
     );
 };
 

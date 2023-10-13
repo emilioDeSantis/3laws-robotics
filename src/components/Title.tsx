@@ -1,31 +1,34 @@
 import React from "react";
 
 interface TitleProps {
+    id?: string;
     children: React.ReactNode;
 }
 
-const Title: React.FC<TitleProps> = ({ children }) => {
+const Title: React.FC<TitleProps> = ({ children, id }) => {
     return (
-        <div
+        <h2
         className="page-padding"
+        style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            width: "100%",
+            marginTop: "4rem",
+        }}
+        id={id}
+    >
+        <span
+            className="product-title"
             style={{
-                width: "100vw",
-                display: "flex",
-                justifyContent: "center",
+                fontWeight: 800,
+                lineHeight: "105%",
+                width: "56rem",
+                marginTop: "3rem",
             }}
         >
-            <h1
-            className="page-title"
-                style={{
-                    fontWeight: 500,
-                    fontFamily: "korataki",
-                    letterSpacing: "0.12em",
-                lineHeight: '130%',
-                }}
-            >
-                {children}
-            </h1>
-        </div>
+            {children}
+        </span>
+    </h2>
     );
 };
 

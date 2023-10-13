@@ -6,7 +6,7 @@ import Description from "@/components/Description";
 
 const CaseStudies: React.FC = () => {
     return (
-        <div
+        <section
             style={{
                 display: "flex",
                 flexDirection: "column",
@@ -64,7 +64,7 @@ const CaseStudies: React.FC = () => {
                     />
                 </div>
             </PageContentContainer>
-        </div>
+        </section>
     );
 };
 

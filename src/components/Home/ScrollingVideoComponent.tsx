@@ -63,7 +63,8 @@ export default function ScrollingVideoComponent({
             drawHeight = screenSize.width / imageAspectRatio;
         } else {
             drawWidth = screenSize.width * mobileZoomFactor;
-            drawHeight = (screenSize.width / imageAspectRatio) * mobileZoomFactor;
+            drawHeight =
+                (screenSize.width / imageAspectRatio) * mobileZoomFactor;
         }
 
         const offsetX = (screenSize.width - drawWidth) / 2;
@@ -120,7 +121,9 @@ export default function ScrollingVideoComponent({
                         (i) => i
                     ).length;
                     const progress = (loadedCount / totalFrames) * 100;
-                    setLoadingProgress(Math.floor(progress));
+                    setLoadingProgress((prevProgress) =>
+                        Math.max(prevProgress, Math.floor(progress))
+                    );
 
                     return img;
                 })
@@ -256,7 +259,8 @@ export default function ScrollingVideoComponent({
                     height: "260vw",
                     width: "100%",
                     overflow: "hidden",
-                    background: "linear-gradient(0deg, rgb(0,0,0) 45%, rgb(255,255,255) 60%)",
+                    background:
+                        "linear-gradient(0deg, rgb(0,0,0) 45%, rgb(255,255,255) 60%)",
                 }}
             >
                 {screenSize.width && screenSize.height ? (
@@ -267,40 +271,50 @@ export default function ScrollingVideoComponent({
                         style={{
                             width: `${screenSize.width}px`,
                             height: `${screenSize.height}px`,
-                            mixBlendMode: 'multiply',
+                            mixBlendMode: "multiply",
                         }}
                     ></canvas>
                 ) : null}
             </div>
             {children}
-            {showLoadingScreen && (
-                <div
+            <div
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    height: "100vh",
+                    width: "100vw",
+                    zIndex: 1001,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    background: "black",
+                    flexDirection: "column",
+                    opacity: showLoadingScreen ? 1 : 0,
+                    pointerEvents: showLoadingScreen ? 'auto' : 'none',
+                    transition: 'opacity ease 1.4s',
+
+                }}
+            >
+                {showLoadingScreen &&<div
+                    className="loading-text"
                     style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        height: "100vh",
-                        width: "100vw",
-                        zIndex: 999,
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        alignItems: "flex-end",
-                        background: "black",
+                        fontFamily: "korataki",
+                        color: "white",
+                        letterSpacing: "0.2em",
+                        lineHeight: "80%",
                     }}
                 >
-                    <div
-                        className="loading-text"
-                        style={{
-                            fontFamily: "korataki",
-                            color: "white",
-                            letterSpacing: "0.2em",
-                            lineHeight: "80%",
-                        }}
-                    >
-                        {loadingProgress}%
-                    </div>
-                </div>
-            )}
+                    {loadingProgress}%
+                </div>}
+                {showLoadingScreen &&<div
+                    style={{
+                        height: "10px",
+                        background: "white",
+                        width: `${loadingProgress}%`,
+                    }}
+                ></div>}
+            </div>
         </div>
     );
 }

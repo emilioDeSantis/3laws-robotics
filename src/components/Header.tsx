@@ -6,12 +6,26 @@ import { link } from "fs";
 import { usePathname } from "next/navigation";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
 import Logo from "./Logo";
+import { useEffect, useRef, useState } from "react";
 
 const Header: React.FC = () => {
-    const visable = useHideNavOnScroll();
-    const isDesktop = useIsDesktop();
+    const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+    const [underlineLeft, setUnderlineLeft] = useState<number>(0);
 
     const pathname = usePathname();
+
+    useEffect(() => {
+        const activeIndex = links.findIndex((link) => link.href === pathname);
+        const activeLink = linkRefs.current[activeIndex];
+
+        if (activeLink) {
+            const left = activeLink.offsetLeft;
+            setUnderlineLeft(left);
+        }
+    }, [pathname]);
+
+    const visable = useHideNavOnScroll();
+    const isDesktop = useIsDesktop();
 
     const links = [
         { name: "Home", href: "/" },
@@ -23,53 +37,82 @@ const Header: React.FC = () => {
     ];
     return (
         <div
-            className="page-padding"
             style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
                 position: "fixed",
                 top: 0,
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "stretch",
-                backgroundColor: pathname == "/" ? "#0000" : "#0b0b0b",
-                color: "white",
-                zIndex: 1000,
-                fontFamily: "korataki",
-                letterSpacing: "0.1em",
                 transform: `translateY(${visable || isDesktop ? 0 : -4}rem)`,
                 transition: "0.3s",
+                zIndex: 1000,
             }}
         >
-            <Link href="/">
-                <Logo />
-            </Link>
-            <nav
-                className="desktop"
+            <div
+                className="page-padding"
                 style={{
-                    color: "#fff",
-                    gap: "3.6vw",
-                    fontSize: "0.64rem",
-                    fontWeight: 200,
-                    letterSpacing: "0.12em",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "stretch",
+                    backgroundColor: pathname == "/" ? "#0000" : "#151516",
+                    color: "white",
+                    zIndex: 1000,
+                    fontFamily: "korataki",
+                    letterSpacing: "0.1em",
                 }}
             >
-                {links.map((link, index) => (
-                    <Link
-                        key={index}
-                        className={link.href == pathname ? "" : "nav-link"}
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                        href={link.href}
-                    >
-                        <div>{link.name}</div>
-                    </Link>
-                ))}
-            </nav>
-            <div className="mobile">
-                <DropdownMenu />
+                <Link href="/">
+                    <Logo />
+                </Link>
+                <nav
+                    className="desktop"
+                    style={{
+                        color: "#EEFDFF",
+                        gap: "2.4rem",
+                        fontSize: "0.7rem",
+                        fontWeight: 400,
+                        letterSpacing: "0.05em",
+                    }}
+                >
+                    {links.map((link, index) => (
+                        <Link
+                            key={index}
+                            ref={(el) => (linkRefs.current[index] = el)}
+                            className={link.href == pathname ? "" : "nav-link"}
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                            href={link.href}
+                        >
+                            <div>{link.name}</div>
+                        </Link>
+                    ))}
+                </nav>
+                <div className="mobile">
+                    <DropdownMenu />
+                </div>
+            </div>
+            <div
+                className="desktop"
+                style={{
+                    width: "100%",
+                    height: "2.5px",
+                    backgroundColor: pathname == "/" ? "#0000" : "#0A0A0A",
+                }}
+            >
+                <div
+                    style={{
+                        width: "2rem",
+                        height: "100%",
+                        backgroundColor: "#5E5CE6",
+                        marginInlineStart: `${underlineLeft}px`,
+//mak eteh ease reall fast then very slow once its close to the end
+                        transition: "margin-inline-start 0.5s ease",
+                    }}
+                ></div>
             </div>
         </div>
     );

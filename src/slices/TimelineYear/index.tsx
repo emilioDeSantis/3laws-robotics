@@ -12,6 +12,7 @@ export type TimelineYearProps = SliceComponentProps<Content.TimelineYearSlice>;
 const TimelineYear = ({ slice }: TimelineYearProps): JSX.Element => {
     return (
         <section
+            aria-label={`Year ${slice.primary.year}`}
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
             style={{
@@ -19,15 +20,16 @@ const TimelineYear = ({ slice }: TimelineYearProps): JSX.Element => {
                 position: "relative",
             }}
         >
-            <div
+            <time
             className="timeline-year"
+            dateTime={slice.primary.year?.toString()}
                 style={{
                     lineHeight: "70%",
                     fontWeight: 900,
                 }}
             >
                 {slice.primary.year}
-            </div>
+            </time>
             <div
             className="timeline-year-circle"
                 style={{

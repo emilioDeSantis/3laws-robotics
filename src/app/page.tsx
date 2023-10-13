@@ -235,37 +235,74 @@ export default async function HomePage() {
                     duration={1500}
                 />
 
-                <ScrollTo className="start" name="start" />
                 <ScrollTo
                     className="Scroll-or-Click-to-Explore"
-                    name="Scroll or Click to Explore"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.scroll_or_click_to_explore ||
+                        "Scroll or Click to Explore"
+                    }
                 />
                 <ScrollTo
                     className="Enter-Dynamic-Environment"
-                    name="Enter Dynamic Environment"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.enter_dynamic_environment ||
+                        "Enter Dynamic Environment"
+                    }
                 />
                 <ScrollTo
                     className="Witness-the-Impact"
-                    name="Witness the Impact"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.witness_the_impact || "Witness the Impact"
+                    }
                 />
                 <ScrollTo
                     className="Face-the-Repercussions"
-                    name="Face the Repercussions"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.face_the_repercussions || "Face the Repercussions"
+                    }
                 />
                 <ScrollTo
                     className="Activate-Safety-Supervisor"
-                    name="Activate Safety Supervisor"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.activate_safety_supervisor ||
+                        "Activate Safety Supervisor"
+                    }
                 />
                 <ScrollTo
                     className="Reenter-Dynamic-Environment"
-                    name="Reenter Dynamic Environment"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.reenter_dynamic_environment ||
+                        "Reenter Dynamic Environment"
+                    }
                 />
-                <ScrollTo className="Continue" name="Continue" />
+                <ScrollTo
+                    className="Continue"
+                    name={
+                        data.scroll_to_next_section_buttons[0]?.continue ||
+                        "Continue"
+                    }
+                />
                 <ScrollTo
                     className="Uncover-Deeper-Insights"
-                    name="Uncover Deeper Insights"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.uncover_deeper_insights ||
+                        "Uncover Deeper Insights"
+                    }
                 />
-                <ScrollTo className="Explore-Beyond" name="Explore Beyond" />
+                <ScrollTo
+                    className="Explore-Beyond"
+                    name={
+                        data.scroll_to_next_section_buttons[0]
+                            ?.explore_beyond || "Explore Beyond"
+                    }
+                />
             </div>
 
             <div
