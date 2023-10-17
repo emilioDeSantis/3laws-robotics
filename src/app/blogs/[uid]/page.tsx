@@ -6,6 +6,8 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import dateDifference from "@/functions/dateDifference";
 
+//
+
 type Params = { uid: string };
 
 export const dynamicParams = false;
