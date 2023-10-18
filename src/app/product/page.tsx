@@ -389,7 +389,7 @@ export default async function Product() {
                     }}
                 />
             </div>
-            <BoldParagraph>
+            {/* <BoldParagraph>
                 {`Understand what’s happening on your system, and decrease
                 time-to-resolution of subsystem failures.`}
             </BoldParagraph>
@@ -415,13 +415,13 @@ export default async function Product() {
                         boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
                     }}
                 />
-            </div>
+            </div> */}
             <Divider />
             <SuiteTitle>Modeler</SuiteTitle>
             <BoldParagraph>
                 Generates data-driven dynamics and environmental models of your
                 systems.
-            </BoldParagraph>{" "}
+            </BoldParagraph>
             <div
                 style={{
                     display: "flex",
@@ -478,6 +478,20 @@ export default async function Product() {
                 Ensures constraints are always satisfied, resulting in smooth
                 operations.
             </BoldParagraph>
+
+            <video
+            controls
+            poster={'/segwaythumbnail.png'}
+                style={{
+                    display: "block",
+                    objectFit: "cover",
+                    background: '#fff1',
+                    width: "clamp(64vw,768px,96vw)",
+                    height: "auto",
+                    marginBlock: "5rem",
+                }}
+                src={'SegwayKickBoth.mp4'}
+            />
             <Divider />
             <Subtitle>Who Uses the Supervisor Suite?</Subtitle>
             <div

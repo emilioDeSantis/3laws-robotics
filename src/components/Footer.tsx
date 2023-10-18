@@ -20,6 +20,7 @@ const Footer: React.FC = () => {
     return (
         <footer
             className="page-padding"
+            id="footer"
             style={{
                 backgroundColor: "#1d1d1d",
                 display: "flex",

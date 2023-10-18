@@ -18,7 +18,7 @@ const ScrollTriggeredText: React.FC<ScrollTriggeredTextProps> = ({
     marginTop,
     startScroll,
     endScroll,
-    className
+    className,
 }) => {
     const scrollProgress = useScrollProgress();
     return (
@@ -32,7 +32,7 @@ const ScrollTriggeredText: React.FC<ScrollTriggeredTextProps> = ({
             }}
         >
             <div
-            className="scroll-triggered-text"
+                className="scroll-triggered-text"
                 style={{
                     opacity:
                         scrollProgress > startScroll &&
@@ -55,4 +55,4 @@ const ScrollTriggeredText: React.FC<ScrollTriggeredTextProps> = ({
     );
 };
 
-export default ScrollTriggeredText
+export default ScrollTriggeredText;

@@ -3,11 +3,11 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { scroller } from "react-scroll";
 
 const scrollToSection = (nextSection: string, duration: number) => {
-    scroller.scrollTo(nextSection, {
-        duration: duration,
-        delay: 0,
-        smooth: "easeInOut",
-    });
+    // scroller.scrollTo(nextSection, {
+    //     duration: duration,
+    //     delay: 0,
+    //     smooth: "easeInOut",
+    // });
 };
 
 interface ScrollToProps {

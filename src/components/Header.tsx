@@ -33,7 +33,7 @@ const Header: React.FC = () => {
         { name: "Case Studies", href: "/case-studies" },
         { name: "About", href: "/about" },
         { name: "Blogs", href: "/blogs" },
-        { name: "Contact", href: "/contact" },
+        // { name: "Contact", href: "/contact" },
     ];
     return (
         <div
@@ -90,6 +90,18 @@ const Header: React.FC = () => {
                             <div>{link.name}</div>
                         </Link>
                     ))}
+                    <a
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginLeft: '3rem'
+                        }}
+                        className="nav-link"
+                        href="#footer"
+                    >
+                        <div>Contact</div>
+                    </a>
                 </nav>
                 <div className="mobile">
                     <DropdownMenu />
