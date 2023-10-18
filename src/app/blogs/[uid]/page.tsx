@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: Params }) {
     //     .catch(() => notFound());
         const d = await client
             .getAllByType("blog_post")
-
+//fis this to that page is possibly undefinded and the page can handle that
             const page = d.find((page) => page.uid === params.uid);
 
    
@@ -58,18 +58,18 @@ export default async function Page({ params }: { params: Params }) {
                         color: "#cccccc",
                     }}
                 >
-                <div style={{}}>{page.data.author}</div>
+                <div style={{}}>{page?.data.author}</div>
                     <div>•</div>
                     <>
-                        {page.data.publish_date
-                            ? dateDifference(page.data.publish_date)
+                        {page?.data.publish_date
+                            ? dateDifference(page?.data.publish_date)
                             : "Invalid Date"}
                     </>
                     <div>•</div>
                     <>
-                        {page.data.read_time == 1
+                        {page?.data.read_time == 1
                             ? "1 min"
-                            : page.data.read_time + " mins"}
+                            : page?.data.read_time + " mins"}
                     </>
                 </div>
                 <div  style={{
@@ -78,8 +78,8 @@ export default async function Page({ params }: { params: Params }) {
                     lineHeight: '130%',
                     color: "#ffffff",
                     marginBottom: '3rem',
-                }}>{page.data.title}</div>
-                <SliceZone slices={page.data.slices} components={components} />
+                }}>{page?.data.title}</div>
+                <SliceZone slices={page?.data.slices} components={components} />
             </div>
         </main>
     );
