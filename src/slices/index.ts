@@ -15,6 +15,7 @@ export const components = {
   security_bullet_list: dynamic(() => import("./SecurityNumberedList")),
   security_paragragh: dynamic(() => import("./SecurityParagraph")),
   security_section: dynamic(() => import("./SecuritySection")),
+  team_member: dynamic(() => import("./TeamMember")),
   timeline_image: dynamic(() => import("./TimelineImage")),
   timeline_paragraph: dynamic(() => import("./TimelineParagraph")),
   timeline_spacer: dynamic(() => import("./Spacer")),

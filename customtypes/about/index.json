@@ -6,6 +6,14 @@
   "status": true,
   "json": {
     "Main": {
+      "title": {
+        "type": "Text",
+        "config": { "label": "Title", "placeholder": "" }
+      },
+      "skip_to_team_button": {
+        "type": "Text",
+        "config": { "label": "Skip to team button", "placeholder": "" }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
@@ -43,6 +51,17 @@
           "placeholder": "A title of the page used for social media and search engines"
         },
         "type": "Text"
+      }
+    },
+    "team members": {
+      "team_section_title": {
+        "type": "Text",
+        "config": { "label": "Team Section Title", "placeholder": "" }
+      },
+      "slices2": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": { "choices": { "team_member": { "type": "SharedSlice" } } }
       }
     }
   }

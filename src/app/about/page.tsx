@@ -35,11 +35,13 @@ const founders = [
     },
 ];
 
+export const fetchCache = "force-no-store";
+
 export default async function About() {
     const client = createClient();
-    // const page = await client.getSingle("about");
-    const data = await client.getAllByType("about");
-    const page = data[0];
+    const page = await client.getSingle("about");
+    // const data = await client.getAllByType("about");
+    // const page = data[0];
 
     return (
         <main
@@ -50,7 +52,7 @@ export default async function About() {
                 paddingBottom: "6rem",
             }}
         >
-            <Title>Technology Development </Title>
+            <Title>{page.data.title}</Title>
 
             <nav>
                 <a
@@ -66,7 +68,7 @@ export default async function About() {
                         marginTop: "3rem",
                     }}
                 >
-                    <span style={{ marginBottom: "5px" }}>Meet the Team</span>
+                    <span style={{ marginBottom: "5px" }}>{page.data.skip_to_team_button}</span>
                     <ChevronDownIcon
                         style={{ height: "20px", width: "20px" }}
                     />
@@ -99,7 +101,7 @@ export default async function About() {
                     </div>
                 </section>
             </PageContentContainer>
-            <Title id="team-section">Meet the Visionaries</Title>
+            <Title id="team-section">{page.data.team_section_title}</Title>
             <section
                 className="page-padding"
                 style={{
@@ -112,7 +114,8 @@ export default async function About() {
                     marginTop: "4rem",
                 }}
             >
-                {founders.map((founder, index) => (
+                <SliceZone slices={page.data.slices2} components={components} />
+                {/* {founders.map((founder, index) => (
                     <Founder
                         key={index}
                         role={founder.role}
@@ -121,7 +124,7 @@ export default async function About() {
                         link={founder.link}
                         image={founder.image}
                     />
-                ))}
+                ))} */}
             </section>
         </main>
     );

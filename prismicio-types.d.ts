@@ -12,10 +12,34 @@ type AboutDocumentDataSlicesSlice =
   | TimelineImageSlice
   | TimelineSpacerSlice;
 
+type AboutDocumentDataSlices2Slice = TeamMemberSlice;
+
 /**
  * Content for About documents
  */
 interface AboutDocumentData {
+  /**
+   * Title field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Skip to team button field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.skip_to_team_button
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  skip_to_team_button: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *About*
    *
@@ -57,7 +81,28 @@ interface AboutDocumentData {
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  meta_title: prismic.KeyTextField;
+  meta_title: prismic.KeyTextField
+  /**
+   * Team Section Title field in *About*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.team_section_title
+   * - **Tab**: team members
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  team_section_title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *About*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slices2[]
+   * - **Tab**: team members
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices2: prismic.SliceZone<AboutDocumentDataSlices2Slice>;
 }
 
 /**
@@ -1531,6 +1576,81 @@ export type SecuritySectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TeamMember → Primary*
+ */
+export interface TeamMemberSliceDefaultPrimary {
+  /**
+   * Picture field in *TeamMember → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.primary.picture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  picture: prismic.ImageField<never>;
+
+  /**
+   * Position field in *TeamMember → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.primary.position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  position: prismic.KeyTextField;
+
+  /**
+   * Name field in *TeamMember → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Bio field in *TeamMember → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.primary.bio
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bio: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for TeamMember Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamMemberSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TeamMemberSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TeamMember*
+ */
+type TeamMemberSliceVariation = TeamMemberSliceDefault;
+
+/**
+ * TeamMember Shared Slice
+ *
+ * - **API ID**: `team_member`
+ * - **Description**: TeamMember
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamMemberSlice = prismic.SharedSlice<
+  "team_member",
+  TeamMemberSliceVariation
+>;
+
+/**
  * Primary content in *TimelineImage → Primary*
  */
 export interface TimelineImageSliceDefaultPrimary {
@@ -1813,6 +1933,7 @@ declare module "@prismicio/client" {
       AboutDocument,
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
+      AboutDocumentDataSlices2Slice,
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
@@ -1877,6 +1998,10 @@ declare module "@prismicio/client" {
       SecuritySectionSliceDefaultItem,
       SecuritySectionSliceVariation,
       SecuritySectionSliceDefault,
+      TeamMemberSlice,
+      TeamMemberSliceDefaultPrimary,
+      TeamMemberSliceVariation,
+      TeamMemberSliceDefault,
       TimelineImageSlice,
       TimelineImageSliceDefaultPrimary,
       TimelineImageSliceVariation,

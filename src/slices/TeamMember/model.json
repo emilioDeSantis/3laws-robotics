@@ -1,0 +1,35 @@
+{
+  "id": "team_member",
+  "type": "SharedSlice",
+  "name": "TeamMember",
+  "description": "TeamMember",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "picture": {
+          "type": "Image",
+          "config": { "label": "Picture", "constraint": {}, "thumbnails": [] }
+        },
+        "position": {
+          "type": "Text",
+          "config": { "label": "Position", "placeholder": "" }
+        },
+        "name": {
+          "type": "Text",
+          "config": { "label": "Name", "placeholder": "" }
+        },
+        "bio": {
+          "type": "Text",
+          "config": { "label": "Bio", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
