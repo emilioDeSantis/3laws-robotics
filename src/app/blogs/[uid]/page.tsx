@@ -12,6 +12,9 @@ type Params = { uid: string };
 
 export const dynamicParams = false;
 
+
+
+
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
     const page = await client
@@ -94,7 +97,12 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
     const client = createClient();
+
     const pages = await client.getAllByType("blog_post");
+    console.log(pages.map((page) => {
+        return { uid: page.uid };
+    }));
+    
 
     return pages.map((page) => {
         return { uid: page.uid };
