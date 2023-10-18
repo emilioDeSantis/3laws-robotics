@@ -6,6 +6,8 @@ import PageContentContainer from "@/components/PageContentContainer";
 import Title from "@/components/Title";
 import Description from "@/components/Description";
 
+export const fetchCache = 'force-no-store';
+
 export default async function Blogs() {
     const client = createClient();
 
