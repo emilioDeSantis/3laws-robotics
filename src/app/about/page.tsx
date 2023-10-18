@@ -37,7 +37,9 @@ const founders = [
 
 export default async function About() {
     const client = createClient();
-    const page = await client.getSingle("about");
+    // const page = await client.getSingle("about");
+    const data = await client.getAllByType("about");
+    const page = data[0];
 
     return (
         <main
@@ -51,22 +53,24 @@ export default async function About() {
             <Title>Technology Development </Title>
 
             <nav>
-            <a
-                href="#team-section"
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: "pointer",
-                    opacity: 1,
-                    transition: "opacity 0.3s",
-                    marginTop: "3rem",
-                }}
-            >
-                <span style={{ marginBottom: "5px" }}>Meet the Team</span>
-                <ChevronDownIcon style={{ height: "20px", width: "20px" }} />
-            </a>
+                <a
+                    href="#team-section"
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        opacity: 1,
+                        transition: "opacity 0.3s",
+                        marginTop: "3rem",
+                    }}
+                >
+                    <span style={{ marginBottom: "5px" }}>Meet the Team</span>
+                    <ChevronDownIcon
+                        style={{ height: "20px", width: "20px" }}
+                    />
+                </a>
             </nav>
             <PageContentContainer>
                 <section

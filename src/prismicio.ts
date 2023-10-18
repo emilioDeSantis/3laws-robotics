@@ -35,10 +35,11 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     routes,
     fetchOptions:
       process.env.NODE_ENV === "production"
-      ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+      ? { next: { tags: ["prismic"] }, cache: "force-cache" } //securty wont update 
       : { next: { revalidate: 5 } },
       // { next: { revalidate: 5 } },   //adding a year to blog post works, addng blog appears but 404 when clicked even when clearing teh cache
-      // { next: { revalidate: 5, tags: ["prismic"]} } //clear cache made the year work 
+      // { next: { revalidate: 5, tags: ["prismic"]} }, //clear cache made the year work 
+      // { next: { tags: ["prismic"] }, cache: "force-cache" },
     ...config,
   });
 
