@@ -7,6 +7,7 @@ import { components } from "@/slices";
 import dateDifference from "@/functions/dateDifference";
 
 //
+export const fetchCache = 'force-no-store';
 
 type Params = { uid: string };
 
@@ -16,6 +17,9 @@ export const dynamicParams = false;
 
 
 export default async function Page({ params }: { params: Params }) {
+
+
+
     const client = createClient();
     // const page = await client
     //     .getByUID("blog_post", params.uid)
@@ -25,6 +29,7 @@ export default async function Page({ params }: { params: Params }) {
 
         const d = await client
             .getAllByType("blog_post")
+            console.log(d)
 //fis this to that page is possibly undefinded and the page can handle that
             const page = d.find((page) => page.uid === params.uid);
 
@@ -106,9 +111,9 @@ export async function generateStaticParams() {
     const client = createClient();
 
     const pages = await client.getAllByType("blog_post");
-    console.log(pages.map((page) => {
-        return { uid: page.uid };
-    }));
+    // console.log(pages.map((page) => {
+    //     return { uid: page.uid };
+    // }));
     
 
     return pages.map((page) => {
