@@ -17,13 +17,13 @@ export const dynamicParams = false;
 
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
-    // const page = await client
-    //     .getByUID("blog_post", params.uid)
-    //     .catch(() => notFound());
-        const d = await client
-            .getAllByType("blog_post")
-//fis this to that page is possibly undefinded and the page can handle that
-            const page = d.find((page) => page.uid === params.uid);
+    const page = await client
+        .getByUID("blog_post", params.uid)
+        .catch(() => notFound());
+//         const d = await client
+//             .getAllByType("blog_post")
+// //fis this to that page is possibly undefinded and the page can handle that
+//             const page = d.find((page) => page.uid === params.uid);
 
    
 
