@@ -81,6 +81,8 @@ export default function RootLayout({
                 style={{
                     background: "#151516",
                     color: "white",
+                    width: "100vw",
+                    overflowX: "hidden",
                 }}
             >
                 <Header />
