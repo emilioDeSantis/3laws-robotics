@@ -6,13 +6,25 @@ import { link } from "fs";
 import { usePathname } from "next/navigation";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
 import Logo from "./Logo";
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 const Header: React.FC = () => {
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
     const [underlineLeft, setUnderlineLeft] = useState<number>(0);
 
+    const screenSize = useScreenSize()
+
     const pathname = usePathname();
+
+    const [isSwitchingTabs, setIsSwitchingTabs] = useState(false);
+
+    useEffect(() => {
+            setIsSwitchingTabs(true);
+            // reset isSwitchingTabs to false after 300ms. Adjust the delay if needed.
+            setTimeout(() => setIsSwitchingTabs(false), 500);
+
+    }, [pathname]);
 
     useEffect(() => {
         const activeIndex = links.findIndex((link) => link.href === pathname);
@@ -22,7 +34,8 @@ const Header: React.FC = () => {
             const left = activeLink.offsetLeft;
             setUnderlineLeft(left);
         }
-    }, [pathname]);
+    }, [pathname, screenSize]);
+
 
     const visable = useHideNavOnScroll();
     const isDesktop = useIsDesktop();
@@ -121,7 +134,7 @@ const Header: React.FC = () => {
                         height: "100%",
                         backgroundColor: "#5E5CE6",
                         marginInlineStart: `${underlineLeft}px`,
-                        transition: "margin-inline-start 0.5s ease",
+                        transition: `${isSwitchingTabs ? "0.5s" : "0s"} ease`,
                     }}
                 ></div>
             </div>
