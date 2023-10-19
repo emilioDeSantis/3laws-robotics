@@ -41,7 +41,7 @@ const CaseStudies: React.FC = () => {
                         title="Flippy 2"
                         company="Miso Robotics"
                         description="Robotic arm kitchen application"
-                        video="/short2.mp4"
+                        video="/Miso.mp4"
                     />
                     <Case
                         image="/canyon.png"
@@ -49,7 +49,7 @@ const CaseStudies: React.FC = () => {
                         title="Canyon 336"
                         company="Grady-white"
                         description="Boat collision avoidance"
-                        video="/short2.mp4"
+                        video="/Boat.mp4"
                     />
                     <Case
                         image="/unitree.png"
@@ -57,7 +57,7 @@ const CaseStudies: React.FC = () => {
                         title="A1"
                         company="Unitree"
                         description="Robot obstacle avoidance"
-                        video="/short2.mp4"
+                        video="/Quadruped.mp4"
                     />
                     <Case
                         image="/drone.png"
@@ -65,7 +65,7 @@ const CaseStudies: React.FC = () => {
                         title="Racing Drone"
                         company="3Laws Robotics"
                         description="Racing drone geofencing above 100kph"
-                        video="/short2.mp4"
+                        video="/RacingDrone.mp4"
                     />
                 </div>
             </PageContentContainer>
