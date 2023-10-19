@@ -13,6 +13,8 @@ import React, { use, useEffect, useRef, useState } from "react";
 import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 
+
+
 // export const metadata: Metadata = {
 //   openGraph: {
 //     title: '3Lawsrobotics.com',
@@ -36,6 +38,9 @@ import { createClient } from "@/prismicio";
 //     type: 'website',
 //   },
 // };
+
+
+export const fetchCache = "force-no-store";
 
 export default async function HomePage() {
     const client = createClient();
@@ -413,12 +418,12 @@ export default async function HomePage() {
             //     </div>
             // </div>
 
-// export async function generateMetadata(): Promise<Metadata> {
-//     const client = createClient();
-//     const page = await client.getSingle("home");
+export async function generateMetadata(): Promise<Metadata> {
+    const client = createClient();
+    const page = await client.getSingle("home");
 
-//     return {
-//         title: page.data.meta_title,
-//         description: page.data.meta_description,
-//     };
-// }
+    return {
+        title: page.data.meta_title,
+        description: page.data.meta_description,
+    };
+}

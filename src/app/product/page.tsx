@@ -7,17 +7,22 @@ import Paragraph from "@/components/Paragraph";
 import Subtitle from "@/components/Subtitle";
 import SuiteTitle from "@/components/SuiteTitle";
 import Title from "@/components/Title";
+import { createClient } from "@/prismicio";
 import {
     ClockIcon,
     GlobeAltIcon,
     ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-//
+
+export const fetchCache = "force-no-store";
+
 
 export default async function Product() {
+
     const features = [
         {
             title: "Size",
@@ -604,3 +609,13 @@ export default async function Product() {
         </main>
     );
 }
+
+export async function generateMetadata(): Promise<Metadata> {
+    const client = createClient();
+    const page = await client.getSingle("product");
+  
+    return {
+      title: page.data.meta_title,
+      description: page.data.meta_description,
+    };
+  }

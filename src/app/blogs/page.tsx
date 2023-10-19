@@ -5,6 +5,7 @@ import Link from "next/link";
 import PageContentContainer from "@/components/PageContentContainer";
 import Title from "@/components/Title";
 import Description from "@/components/Description";
+import { Metadata } from "next";
 
 export const fetchCache = 'force-no-store';
 
@@ -134,3 +135,13 @@ export default async function Blogs() {
         </div>
     );
 }
+
+export async function generateMetadata(): Promise<Metadata> {
+    const client = createClient();
+    const page = await client.getSingle("case_studies");
+  
+    return {
+      title: page.data.meta_title,
+      description: page.data.meta_description,
+    };
+  }

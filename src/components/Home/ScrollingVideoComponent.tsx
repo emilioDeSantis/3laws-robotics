@@ -10,7 +10,7 @@ import ScrollToButton from "./ScrollToButton";
 import ScrollTriggeredText from "./ScrollTriggeredText";
 import { HomeDocumentData, Simplify } from "../../../prismicio-types";
 
-const totalFrames = 551;
+const totalFrames = 5;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 type FrameImage = HTMLImageElement | null;
@@ -352,7 +352,7 @@ function createImageSrc(
                             fontFamily: "korataki",
                         }}
                     >
-                        {`Introducing the 3 Laws'`}
+                        {`Deep Insights, Improved Reliability, Higher Performance`}
                     </div>
                     <h1
                         className="hero-title"
@@ -362,7 +362,7 @@ function createImageSrc(
                             letterSpacing: "0.12em",
                         }}
                     >
-                        A.I. Robotics Safety Supervisor
+                        3Laws A.I. Supervisor Suite
                     </h1>
                 </div>
 

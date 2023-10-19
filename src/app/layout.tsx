@@ -22,6 +22,9 @@ import { Metadata } from "next";
 // })
 
 
+export const fetchCache = 'force-no-store';
+
+
 export const metadata: Metadata = {
     openGraph: {
       title: 'Revolutionizing Robotic Safety',
