@@ -5,6 +5,9 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import PageContentContainer from "@/components/PageContentContainer";
 
+
+export const fetchCache = "force-no-store";
+
 export default async function Security() {
     const client = createClient();
     const page = await client.getSingle("security");
