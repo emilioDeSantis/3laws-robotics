@@ -1,6 +1,6 @@
-"use client";
-import Image from "next/image";
+"use client"
 import React, { useState } from "react";
+import Image from "next/image";
 import { roboto_mono } from "../fonts";
 import Button2 from "@/components/Button2";
 
@@ -9,8 +9,8 @@ interface CaseProps {
     alt: string;
     title: string;
     company: string;
-    description: string;
     video: string;
+    children: React.ReactNode; // using React.ReactNode for children prop
 }
 
 const Case: React.FC<CaseProps> = ({
@@ -18,8 +18,8 @@ const Case: React.FC<CaseProps> = ({
     alt,
     title,
     company,
-    description,
     video,
+    children, // this replaces the description prop
 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -42,7 +42,7 @@ const Case: React.FC<CaseProps> = ({
         >
             <h2
                 style={{
-                    fontSize: "1.8rem",
+                    fontSize: "1.4rem",
                     lineHeight: "100%",
                     fontWeight: 600,
                     textTransform: "uppercase",
@@ -53,8 +53,8 @@ const Case: React.FC<CaseProps> = ({
                 {title}
             </h2>
             <video
-            controls
-            poster={image}
+                controls
+                poster={image}
                 style={{
                     width: "100%",
                     height: "auto",
@@ -92,7 +92,8 @@ const Case: React.FC<CaseProps> = ({
                     {company}
                 </p>
             </div>
-            <h3
+            {/* This is where the children prop is used, allowing any content to be inserted */}
+            <div
                 style={{
                     fontSize: "1rem",
                     lineHeight: "120%",
@@ -100,11 +101,10 @@ const Case: React.FC<CaseProps> = ({
                     letterSpacing: "0.1em",
                 }}
             >
-                {description}
-            </h3>
+                {children}
+            </div>
         </article>
     );
 };
-
 
 export default Case;

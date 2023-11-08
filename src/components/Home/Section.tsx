@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 
-
 interface SectionProps {
     right: boolean;
     marginTop: string;
@@ -19,29 +18,29 @@ const Section: React.FC<SectionProps> = ({
     text,
     href,
     linkText,
-    className
+    className,
 }) => {
     return (
         <div
-        className={`${className} section-card-container`}
+            className={`${className} section-card-container`}
             style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: right ? "flex-end" : "flex-start",
                 zIndex: 10,
                 position: "absolute",
-                width: '100vw',
+                width: "100vw",
             }}
         >
             <div
-            className={`${className} card-texture section-card`}
+                className={`${className} card-texture section-card`}
                 style={{
                     display: "flex",
                     flexDirection: "column",
                 }}
             >
                 <h2
-                className="card-title"
+                    className="card-title"
                     style={{
                         fontWeight: 400,
                         letterSpacing: "0.09em",
@@ -52,7 +51,7 @@ const Section: React.FC<SectionProps> = ({
                     {title}
                 </h2>
                 <p
-                className="card-text"
+                    className="card-text"
                     style={{
                         fontSize: "0.9rem",
                         fontWeight: 300,
@@ -63,7 +62,7 @@ const Section: React.FC<SectionProps> = ({
                     {text}
                 </p>
 
-                <Link
+                {/* <Link
                     href={href}
                     className="card-link"
                     style={{
@@ -73,10 +72,60 @@ const Section: React.FC<SectionProps> = ({
                     }}
                 >
                     {linkText} →
-                </Link>
+                </Link> */}
+                <CardLink href={href} linkText={linkText} />
             </div>
         </div>
     );
 };
 
-export default Section
+interface CardLinkProps {
+    href: string;
+    linkText: string;
+}
+
+const CardLink: React.FC<CardLinkProps> = ({ href, linkText }) => {
+    // This assumes that you're considering "internal" as any link starting with '/'.
+    const isInternalLink = href.startsWith("/");
+
+    // If it's an internal link, use Next.js's Link component for client-side routing.
+
+     if (href.length === 0) {
+        return
+     }
+    if (isInternalLink) {
+        return (
+            <Link
+                href={href}
+                className="card-link"
+                style={{
+                    fontWeight: 600,
+                    fontSize: "1rem",
+                    letterSpacing: "0.08em",
+                }}
+            >
+                {linkText} →
+            </Link>
+        );
+    }
+
+    // If it's an external link, use a regular <a> element with target="_blank" to open in a new tab.
+    // Also adding rel="noopener noreferrer" for security reasons.
+    return (
+        <a
+            href={href}
+            className="card-link"
+            style={{
+                fontWeight: 600,
+                fontSize: "1rem",
+                letterSpacing: "0.08em",
+            }}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {linkText} →
+        </a>
+    );
+};
+
+export default Section;

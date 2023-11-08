@@ -46,7 +46,7 @@ export default async function HomePage() {
     const client = createClient();
     const page = await client.getSingle("home");
     const { data } = page;
-    console.log("test", data);
+    // console.log("test", data);
 
     return (
         <ScrollingVideoComponent data={data}/>
