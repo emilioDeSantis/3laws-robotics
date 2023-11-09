@@ -10,7 +10,7 @@ import ScrollToButton from "./ScrollToButton";
 import ScrollTriggeredText from "./ScrollTriggeredText";
 import { HomeDocumentData, Simplify } from "../../../prismicio-types";
 
-const totalFrames = 551;
+const totalFrames = 51;
 const framePath = "/scroll-video-3240 copy/3lawschoppyandfastportraitarCopy_";
 
 type FrameImage = HTMLImageElement | null;

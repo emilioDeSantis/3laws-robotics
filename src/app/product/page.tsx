@@ -371,7 +371,22 @@ export default async function Product() {
                 Provides deep insights into performance, reliability, and
                 safety.
             </BoldParagraph>
-            <div
+
+
+            <video
+            controls
+            poster={'/Monitorthumbnail.png'}
+                style={{
+                    display: "block",
+                    objectFit: "cover",
+                    background: '#fff1',
+                    width: "clamp(64vw,768px,96vw)",
+                    height: "auto",
+                    marginBlock: "5rem",
+                }}
+                src={'Monitor.mp4'}
+            />
+            {/* <div
                 style={{
                     display: "flex",
                     alignItems: "center",
@@ -393,7 +408,7 @@ export default async function Product() {
                         boxShadow: "0 4px 40px rgba(10, 10, 11, 1)",
                     }}
                 />
-            </div>
+            </div> */}
             {/* <BoldParagraph>
                 {`Understand what’s happening on your system, and decrease
                 time-to-resolution of subsystem failures.`}
@@ -427,7 +442,7 @@ export default async function Product() {
                 Generates data-driven dynamics and environmental models of your
                 systems.
             </BoldParagraph>
-            <div
+            {/* <div
                 style={{
                     display: "flex",
                     alignItems: "center",
@@ -476,7 +491,20 @@ export default async function Product() {
                         }}
                     />
                 </div>
-            </div>
+            </div> */}
+                        <video
+            controls
+            poster={'/Modelerthumbnail.png'}
+                style={{
+                    display: "block",
+                    objectFit: "cover",
+                    background: '#fff1',
+                    width: "clamp(64vw,768px,96vw)",
+                    height: "auto",
+                    marginBlock: "5rem",
+                }}
+                src={'Modeler.mp4'}
+            />
             <Divider />
             <SuiteTitle>Copilot</SuiteTitle>
             <BoldParagraph>
@@ -486,7 +514,7 @@ export default async function Product() {
 
             <video
             controls
-            poster={'/segwaythumbnail.png'}
+            poster={'/Copilot thumbnail.png'}
                 style={{
                     display: "block",
                     objectFit: "cover",
@@ -495,7 +523,7 @@ export default async function Product() {
                     height: "auto",
                     marginBlock: "5rem",
                 }}
-                src={'SegwayKickBoth.mp4'}
+                src={'Copilot.mp4'}
             />
             <Divider />
             <Subtitle>Who Uses the Supervisor Suite?</Subtitle>
