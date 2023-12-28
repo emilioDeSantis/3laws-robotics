@@ -9,6 +9,7 @@ export const components = {
   blog_post_numbered_list: dynamic(() => import("./BlogPostNumberedList")),
   blog_post_paragraph: dynamic(() => import("./BlogPostParagraph")),
   blog_post_sub_title: dynamic(() => import("./BlogPostSubTitle")),
+  blog_rich_text: dynamic(() => import("./BlogRichText")),
   privacy_bullet_list: dynamic(() => import("./PrivacyBulletList")),
   privacy_paragragh: dynamic(() => import("./PrivacyParagraph")),
   privacy_subtitle: dynamic(() => import("./PrivacySubtitle")),

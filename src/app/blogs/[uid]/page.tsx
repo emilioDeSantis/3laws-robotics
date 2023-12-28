@@ -48,12 +48,13 @@ export default async function Page({ params }: { params: Params }) {
                     width: "50rem",
                     display: "flex",
                     marginTop: '5rem',
+                    marginBottom: '5rem',
                     flexDirection: 'column',
                     gap: '2rem',
-                    lineHeight: '200%',
-                    fontWeight: 300,
-                    fontSize: '0.96rem',
-                    color: "#dddddd",
+                    // lineHeight: '200%',
+                    // fontWeight: 300,
+                    // fontSize: '0.96rem',
+                    // color: "#dddddd",
                 }}
             >
                 <div

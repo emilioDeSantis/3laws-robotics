@@ -52,7 +52,8 @@
             "blog_post_note": { "type": "SharedSlice" },
             "blog_post_image": { "type": "SharedSlice" },
             "blog_post_bullet_list": { "type": "SharedSlice" },
-            "blog_post_numbered_list": { "type": "SharedSlice" }
+            "blog_post_numbered_list": { "type": "SharedSlice" },
+            "blog_rich_text": { "type": "SharedSlice" }
           }
         }
       }

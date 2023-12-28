@@ -34,11 +34,11 @@ const BlogPostBulletList = ({
                         >
                             <PrismicRichText field={item.title} />
                         </span>
-                        <span
+                        {item.title.length > 0 && <span
                             style={{ display: "inline-block", fontWeight: 900 }}
                         >
                             :&nbsp;
-                        </span>
+                        </span>}
                         <span style={{ display: "inline-block" }}>
                             <PrismicRichText field={item.text} />
                         </span>

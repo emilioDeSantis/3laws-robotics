@@ -123,7 +123,8 @@ type BlogPostDocumentDataSlicesSlice =
   | BlogPostNoteSlice
   | BlogPostImageSlice
   | BlogPostBulletListSlice
-  | BlogPostNumberedListSlice;
+  | BlogPostNumberedListSlice
+  | BlogRichTextSlice;
 
 /**
  * Content for Blog Post documents
@@ -1458,6 +1459,51 @@ export type BlogPostSubTitleSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *BlogRichText → Primary*
+ */
+export interface BlogRichTextSliceDefaultPrimary {
+  /**
+   * text field in *BlogRichText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_rich_text.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BlogRichText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogRichTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogRichTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogRichText*
+ */
+type BlogRichTextSliceVariation = BlogRichTextSliceDefault;
+
+/**
+ * BlogRichText Shared Slice
+ *
+ * - **API ID**: `blog_rich_text`
+ * - **Description**: BlogRichText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogRichTextSlice = prismic.SharedSlice<
+  "blog_rich_text",
+  BlogRichTextSliceVariation
+>;
+
+/**
  * Primary content in *PrivacyBulletList → Primary*
  */
 export interface PrivacyBulletListSliceDefaultPrimary {
@@ -2177,6 +2223,10 @@ declare module "@prismicio/client" {
       BlogPostSubTitleSliceDefaultPrimary,
       BlogPostSubTitleSliceVariation,
       BlogPostSubTitleSliceDefault,
+      BlogRichTextSlice,
+      BlogRichTextSliceDefaultPrimary,
+      BlogRichTextSliceVariation,
+      BlogRichTextSliceDefault,
       PrivacyBulletListSlice,
       PrivacyBulletListSliceDefaultPrimary,
       PrivacyBulletListSliceDefaultItem,

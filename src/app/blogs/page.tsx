@@ -14,6 +14,25 @@ export default async function Blogs() {
 
     const pages = await client.getAllByType("blog_post");
 
+  
+    pages.sort((a, b) => {
+        // Check and handle null publish_dates
+        if (!a.data.publish_date || !b.data.publish_date) {
+            return !a.data.publish_date ? -1 : 1;
+        }
+
+        const dateA = new Date(a.data.publish_date);
+        const dateB = new Date(b.data.publish_date);
+
+        // Check if dates are valid
+        if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+            // Handle invalid dates, e.g., by treating them as oldest or newest
+            return isNaN(dateA.getTime()) ? -1 : 1;
+        }
+
+        return dateB.getTime() - dateA.getTime(); // Use getTime() for arithmetic
+    });
+
     return (
         <div
             style={{

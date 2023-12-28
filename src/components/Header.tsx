@@ -26,13 +26,30 @@ const Header: React.FC = () => {
 
     }, [pathname]);
 
+    // useEffect(() => {
+    //     const activeIndex = links.findIndex((link) => link.href === pathname);
+    //     const activeLink = linkRefs.current[activeIndex];
+
+    //     if (activeLink) {
+    //         const left = activeLink.offsetLeft;
+    //         setUnderlineLeft(left);
+    //     }
+    // }, [pathname, screenSize]);
+
     useEffect(() => {
         const activeIndex = links.findIndex((link) => link.href === pathname);
-        const activeLink = linkRefs.current[activeIndex];
-
-        if (activeLink) {
-            const left = activeLink.offsetLeft;
-            setUnderlineLeft(left);
+    
+        if (activeIndex !== -1) {
+            // Page is in the links list
+            const activeLink = linkRefs.current[activeIndex];
+    
+            if (activeLink) {
+                const left = activeLink.offsetLeft;
+                setUnderlineLeft(left);
+            }
+        } else {
+            // Page is not in the links list, hide the underline
+            setUnderlineLeft(-100); // Set to a value that effectively hides the underline
         }
     }, [pathname, screenSize]);
 
